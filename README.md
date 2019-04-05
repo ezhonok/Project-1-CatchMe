@@ -8,14 +8,14 @@ Game objective:
 User is supposed to catch items rolling down the ramps by moving basket toward the ramp with the item.
 
 
-Screen Layout:
+*Screen Layout:
 1. One character who can move four ways:
 	-Left hands-down
 	-Left hands-up
 	-Right hands-down
 	-Right hands-up
 
-2. Four ramps
+2. Four ramps (static, no functionality)
 	-Left down corner
 	-Left up corner
 	-Right down corner
