@@ -55,7 +55,7 @@ const game = {
 	},
 
 	rollItems () {
-		$('#ramp1').prepend("<div>item</div").css('height', '10', 'width', '10', 'backgroundColor', 'black')
+		
 	},
 
 	loseLife () {

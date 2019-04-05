@@ -10,13 +10,10 @@ body {
 	border-radius: 20%;
 	background-color: gray;
 	color: ivory;
-	display:/* flex;
-	justify-content: center;
-*/
 }
 
-#ramp1 {
-	height: 5px;
+#left-top-corner-container {
+	height: 100px;
 	width: 150px;
 	background-color: black;
 	border: solid 3px black;
@@ -31,13 +28,34 @@ body {
 
 }
 
-#ramp2 {
+#ramp1 {
 	height: 5px;
+	width: 150px;
+	background-color: green;
+}
+
+#item1container {
+	height: 80px;
+	width: 130px;
+	background-color: blue;
+	position: relative;
+	
+}
+
+#item1 {
+	height: 70px;
+	width: 70px;
+	background-color: red;
+
+}
+
+#right-top-corner-container {
+	height: 100px;
 	width: 150px;
 	background-color: black;
 	border: solid 3px black;
 	position: relative;
-	top: -40%;
+	top: -56%;
 	left: 74%;
 	-webkit-transform: skewY(-20deg);
 	-moz-transform: skewY(-20deg);
@@ -46,14 +64,35 @@ body {
 	transform: skewY(-20deg);
 }
 
+#item2container {
+	height: 80px;
+	width: 130px;
+	background-color: blue;
+	position: relative;
+/*	border-radius: 20%;
+*/	/*top: -68%;
+	left: 86%;*/
+}
 
-#ramp3 {
+#item2 {
+	height: 70px;
+	width: 70px;
+	background-color: red;
+}
+
+#ramp2 {
 	height: 5px;
+	width: 150px;
+	background-color: green;
+}
+
+#left-bottom-corner-container {
+	height: 100px;
 	width: 150px;
 	background-color: black;
 	border: solid 3px black;
 	position: relative;
-	top: 0%;
+	top: -33%;
 	left: 0%;
 	-webkit-transform: skewY(20deg);
 	-moz-transform: skewY(20deg);
@@ -62,15 +101,34 @@ body {
 	transform: skewY(20deg);
 }
 
+#item3container {
+	height: 80px;
+	width: 130px;
+	background-color: blue;
+	position: relative;
+	/*top: 0%;
+	left: 74%;*/
+}
 
+#item3 {
+	height: 70px;
+	width: 70px;
+	background-color: red;
+}
 
-#ramp4 {
+#ramp3 {
 	height: 5px;
+	width: 150px;
+	background-color: green;
+}
+
+#right-bottom-corner-container {
+	height: 100px;
 	width: 150px;
 	background-color: black;
 	border: solid 3px black;
 	position: relative;
-	top: 0%;
+	top: -51%;
 	left: 74%;
 	-webkit-transform: skewY(-20deg);
 	-moz-transform: skewY(-20deg);
@@ -79,28 +137,49 @@ body {
 	transform: skewY(-20deg);
 }
 
+#item4container {
+	height: 80px;
+	width: 130px;
+	background-color: blue;
+	position: relative;
+
+}
+
+#item4 {
+	height: 70px;
+	width: 70px;
+	background-color: red;
+}
+
+#ramp4 {
+	height: 5px;
+	width: 150px;
+	background-color: green;
+}
+
+
 
 #character {
 	height: 350px;
-	width: 270px;
+	width: 250px;
 	background-color: black;
 	border: solid 3px black;
 	position: relative;
 	top: 25%;
-	left: 27%;
+	left: 29%;
 }
 
 
 #scoreboard {
 	height: 80px;
 	width: 200px;
-	background-color: black;
+	background-color: white;
 	border: solid 3px black;
 	position: relative;
-	top: -65%;
+	top: -129%;
 	left: 33%;
 	border-radius: 20%;
-	color: ivory;
+	color: black;
 
 }
 
