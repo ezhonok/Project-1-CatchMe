@@ -82,12 +82,12 @@ body {
 
 #character {
 	height: 350px;
-	width: 200px;
+	width: 270px;
 	background-color: black;
 	border: solid 3px black;
 	position: relative;
 	top: 25%;
-	left: 35%;
+	left: 27%;
 }
 
 
@@ -97,8 +97,8 @@ body {
 	background-color: black;
 	border: solid 3px black;
 	position: relative;
-	top: -60%;
-	left: 35%;
+	top: -65%;
+	left: 33%;
 	border-radius: 20%;
 	color: ivory;
 

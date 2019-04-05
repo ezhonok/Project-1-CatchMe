@@ -10,10 +10,31 @@ class Player {
 		this.lives = 0;
 		this.score = 0;
 		this.round = 1;
+
+	}
+	moveLeftUp () {
+
+	}
+	moveLeftDown () {
+
+	}
+	moveRightUp () {
+
+	}
+
+	moveRightDown () {
+
 	}
 }
 
-const player = new Player('')
+const alice = new Player('')
+
+
+class Items {
+	constructor() {
+		// this.
+	}
+}
 
 
 const game = {
@@ -24,6 +45,18 @@ const game = {
 	lives: null,
 	round: null,
 	score: null,
+	characterEssence: null,
+
+	startGame () {
+		const alice = new Player
+		console.log(alice);
+		this.characterEssence = alice
+		this.rollItems()
+	},
+
+	rollItems () {
+		$('#ramp1').prepend("<div>item</div").css('height', '10', 'width', '10', 'backgroundColor', 'black')
+	},
 
 	loseLife () {
 
@@ -52,8 +85,12 @@ const fallingItems = {
 }
 
 
+game.startGame();
 
 
 
 //Event listeners
+$('#game-container').on('click', (event) => {
+	console.log(event.target);
+})
 
