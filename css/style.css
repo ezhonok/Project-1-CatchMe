@@ -15,8 +15,8 @@ body {
 #left-top-corner-container {
 	height: 100px;
 	width: 150px;
-	background-color: black;
-	border: solid 3px black;
+	/*background-color: black;*/
+	border: solid 1px black;
 	position: relative;
 	top: -39%;
 	left: 0%;
@@ -25,35 +25,56 @@ body {
 	-ms-transform: skewY(20deg);
 	-o-transform: skewY(20deg);
 	transform: skewY(20deg);
+	display: flex;
+	align-items: flex-end;
+	overflow: hidden;
+	flex-direction: column-reverse;
 
 }
 
 #ramp1 {
-	height: 5px;
+	height: 10px;
 	width: 150px;
 	background-color: green;
+
+
 }
 
 #item1container {
 	height: 80px;
-	width: 130px;
-	background-color: blue;
+	width: 150px;
+	/*background-color: blue;*/
 	position: relative;
+
 	
 }
 
 #item1 {
-	height: 70px;
+	height: 80px;
 	width: 70px;
-	background-color: red;
-
+	background-image: url("https://payload.cargocollective.com/1/2/71834/11021397/ATI_bird_animations_all.gif");
+	background-size: 100% 100%;
+	position: relative;
+	/*animation-duration: .7s;
+	animation-name: bounce;*/
 }
+/*
+@keyframes bounce {
+	from {
+		margin-left: 100%;
+		width: 300%;
+	}
+	to {
+		margin-left: 0%;
+		width: 100%;
+	}
+}*/
 
 #right-top-corner-container {
 	height: 100px;
 	width: 150px;
-	background-color: black;
-	border: solid 3px black;
+	/*background-color: black;*/
+	border: solid 1px black;
 	position: relative;
 	top: -56%;
 	left: 74%;
@@ -62,26 +83,37 @@ body {
 	-ms-transform: skewY(-20deg);
 	-o-transform: skewY(-20deg);
 	transform: skewY(-20deg);
+	display: flex;
+	align-items: flex-end;
+	flex-direction: column-reverse;
+	overflow: hidden;
 }
 
 #item2container {
 	height: 80px;
-	width: 130px;
-	background-color: blue;
+	width: 150px;
+	/*background-color: blue;*/
 	position: relative;
+	display: flex;
+	flex-direction: column-reverse;
+
 /*	border-radius: 20%;
 */	/*top: -68%;
 	left: 86%;*/
 }
 
 #item2 {
-	height: 70px;
+	height: 80px;
 	width: 70px;
-	background-color: red;
+	position: relative;
+	align-self: flex-end;
+	background-image: url("https://data.whicdn.com/images/81086916/original.gif");
+	background-size: 100% 100%;
+	/*left: 40%;*/
 }
 
 #ramp2 {
-	height: 5px;
+	height: 10px;
 	width: 150px;
 	background-color: green;
 }
@@ -89,8 +121,8 @@ body {
 #left-bottom-corner-container {
 	height: 100px;
 	width: 150px;
-	background-color: black;
-	border: solid 3px black;
+	/*background-color: black;*/
+	border: solid 1px black;
 	position: relative;
 	top: -33%;
 	left: 0%;
@@ -99,25 +131,33 @@ body {
 	-ms-transform: skewY(20deg);
 	-o-transform: skewY(20deg);
 	transform: skewY(20deg);
+	display: flex;
+	align-items: flex-end;
+	overflow: hidden;
+	flex-direction: column-reverse;
+	overflow: hidden;
+
 }
 
 #item3container {
 	height: 80px;
-	width: 130px;
-	background-color: blue;
+	width: 150px;
+	/*background-color: blue;*/
 	position: relative;
 	/*top: 0%;
 	left: 74%;*/
 }
 
 #item3 {
-	height: 70px;
+	height: 80px;
 	width: 70px;
-	background-color: red;
+	background-image: url("https://i.imgur.com/nk7l6Zi.gif");
+	background-size: 100% 100%;
+	position: relative;
 }
 
 #ramp3 {
-	height: 5px;
+	height: 10px;
 	width: 150px;
 	background-color: green;
 }
@@ -125,8 +165,8 @@ body {
 #right-bottom-corner-container {
 	height: 100px;
 	width: 150px;
-	background-color: black;
-	border: solid 3px black;
+	/*background-color: black;*/
+	border: solid 1px black;
 	position: relative;
 	top: -51%;
 	left: 74%;
@@ -135,24 +175,34 @@ body {
 	-ms-transform: skewY(-20deg);
 	-o-transform: skewY(-20deg);
 	transform: skewY(-20deg);
+	display: flex;
+	align-items: flex-end;
+	overflow: hidden;
+	flex-direction: column-reverse;
+	overflow: hidden;
 }
 
 #item4container {
 	height: 80px;
-	width: 130px;
-	background-color: blue;
+	width: 150px;
+	/*background-color: blue;*/
 	position: relative;
+	display: flex;
+	flex-direction: column-reverse;
 
 }
 
 #item4 {
-	height: 70px;
+	height: 80px;
 	width: 70px;
-	background-color: red;
+	align-self: flex-end;
+	background-image: url("https://colossalmedia.com/wp-content/uploads/2018/02/Heartgif.gif");
+	background-size: 100% 100%;
+	position: relative;
 }
 
 #ramp4 {
-	height: 5px;
+	height: 10px;
 	width: 150px;
 	background-color: green;
 }
@@ -167,13 +217,15 @@ body {
 	position: relative;
 	top: 25%;
 	left: 29%;
+	background-size: contain;
+
 }
 
 
 #scoreboard {
 	height: 80px;
 	width: 200px;
-	background-color: white;
+	/*background-color: white;*/
 	border: solid 3px black;
 	position: relative;
 	top: -129%;
