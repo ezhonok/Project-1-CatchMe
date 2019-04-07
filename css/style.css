@@ -225,7 +225,7 @@ body {
 #scoreboard {
 	height: 80px;
 	width: 200px;
-	/*background-color: white;*/
+	background-color: pink;
 	border: solid 3px black;
 	position: relative;
 	top: -129%;

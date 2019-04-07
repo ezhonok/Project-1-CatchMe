@@ -1,9 +1,7 @@
 console.log("O.o");
 
 
-//character movements:
-//centered only at the beginning of the round
-
+//working on logic for score going up
 
 class Player {
 	constructor() {
@@ -25,27 +23,27 @@ class Player {
 	}
 }
 
-const alice = new Player('')
+// const alice = new Player('')
 
 
 class Item {
 	constructor() {
 		const randItem = Math.floor(Math.random() * 4)
 		this.item = [$('#item1'), $('#item2'), $('#item3'), $('#item4')][randItem]
-	// console.log("This is your random item " + randItem);
+
+	// console.log(this.item);
 	
 	}
 
 }
 
-const newItem = new Item('')
 
 
 const game = {
-	//game starts by user pressing enter
 	playerOneStats: null, //will be used when player 1 is done
 	playerTwoStats: null, //will be used when player 2 is done
 
+	clock: null,
 	lives: null,
 	round: null,
 	score: null,
@@ -54,13 +52,20 @@ const game = {
 
 	startGame () {
 		const alice = new Player
-		console.log(alice);
 		this.characterEssence = alice
-		// this.rollItems()
-		const newItem = new Item
-		this.itemEssence = newItem
-		console.log(newItem);
+
+		// this.startTimer()
+		this.rollItems()
+		console.log(alice);
+		// console.log(newItem);
+		// this.newItem.animate ({
+		// 	"right": "200px",
+		// }, 2000, () => {
+		// 	console.log('done')
+		// });
+
 	},
+
 
 	moveLeftUp () {
 	$(document).keydown(function(keypressed) {
@@ -72,15 +77,74 @@ const game = {
 
 	},
 
-	rollItems () { 
-		$("#item2").animate ({
+
+	startTimer() {
+		setInterval(
+
+			() => {
+				this.rollItems()
+				this.clock++
+				console.log("clock " + this.clock);
+				console.log("this is new item" + this.newItem);
+			},
+
+			1000
+			)
+	},
+
+	rollItems () {
+		const newItem = new Item
+		this.itemEssence = newItem
+		console.log(this.itemEssence);
+		if (this.itemEssence.id === "item1") {
+			console.log("Item 1 is up");
+			this.animateItem1()
+		}
+		if (this.itemEssence == $('#item2')) {
+			this.animateItem2()
+			console.log("Item 2 is up");
+
+		}
+		if (this.itemEssence == $('#item3')) {
+			this.animateItem3()
+			console.log("Item 3 is up");
+
+		}
+		if (this.itemEssence == $('#item4')) {
+			this.animateItem4()
+		}
+	},
+
+	animateItem1 () {
+			$('#item1').animate ({
 			"right": "200px",
-			// "background-color": "purple"
 		}, 2000, () => {
-			console.log('done')
+			console.log('done item1')
 		});
+	},
 
+	animateItem2 () {
+			$('#item2').animate ({
+			"right": "200px",
+		}, 2000, () => {
+			console.log('done item2')
+		});
+	},
 
+	animateItem3 () {
+			$('#item3').animate ({
+			"right": "200px",
+		}, 2000, () => {
+			console.log('done item3')
+		});
+	},
+
+	animateItem4 () {
+			$('#item4').animate ({
+			"right": "200px",
+		}, 2000, () => {
+			console.log('done item4')
+		});
 	},
 
 	loseLife () {
@@ -88,17 +152,18 @@ const game = {
 	},
 
 	scoreUp () {
-		if ((randItem === $('#item1')) && moveLeftUp()){
+		if (moveLeftUp()){
 			this.score++
 			$('#scoreboard').text("Score: " + this.score)
+			console.log(this.score);
 		}
-		if ((randItem === $('#item2')) && moveRightUp()){
+		if ((newItem === $('#item2')) && moveRightUp()){
 			this.score++
 		}
-		if ((randItem === $('#item3')) && moveLeftDown()){
+		if ((newItem === $('#item3')) && moveLeftDown()){
 			this.score++
 		}
-		if ((randItem === $('#item4')) && moveRightDown()){
+		if ((newItem === $('#item4')) && moveRightDown()){
 			this.score++
 		}
 	},
@@ -117,14 +182,14 @@ const game = {
 }
 
 
-
-
+	
 game.startGame();
-// game.rollItems()
+// game.moveLeftUp()
 // game.scoreUp()
-game.moveLeftUp()
+game.rollItems()
+// game.startTimer()
 
-
+// console.log(game.itemNumber);
 
 //Event listeners
 $('#game-container').on('click', (event) => {
