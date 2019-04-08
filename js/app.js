@@ -11,29 +11,22 @@ class Player {
 
 	}
 
-	moveLeftDown () {
-65
-	}
-	moveRightUp () {
-80
-	}
-
-	moveRightDown () {
-76
-	}
 }
 
-// const alice = new Player('')
 
 
 class Item {
 	constructor() {
 		const randItem = Math.floor(Math.random() * 4)
 		this.item = [$('#item1'), $('#item2'), $('#item3'), $('#item4')][randItem]
-
-	// console.log(this.item);
-	
+		// this.img = [('https://payload.cargocollective.com/1/2/71834/11021397/ATI_bird_animations_all.gif'), ('https://data.whicdn.com/images/81086916/original.gif'), ('https://colossalmedia.com/wp-content/uploads/2018/02/Heartgif.gif'), ('https://i.imgur.com/nk7l6Zi.gif')][randItem]
 	}
+	// createDiv () {
+	// 	const div = $('<div/>').addId(this.item).css({
+	// 		// 'background-img': this.img
+	// 	})
+	// 	return div
+	// }
 
 }
 
@@ -49,20 +42,27 @@ const game = {
 	score: null,
 	characterEssence: null,
 	itemEssence: null,
+	roundStarted: false,
+	currentItems: [],
+
+	makeItems() {
+		console.log("makeItems called");
+		if(this.roundStarted === false) {
+			for (let i = 0; i < 4; i++) {
+				const t = new Item(i);
+				this.currentItems.push(t)
+				$('')
+			}
+		}
+	},
 
 	startGame () {
-		const alice = new Player
+		const alice = new Player()
 		this.characterEssence = alice
 
-		// this.startTimer()
+		this.startTimer()
 		this.rollItems()
 		console.log(alice);
-		// console.log(newItem);
-		// this.newItem.animate ({
-		// 	"right": "200px",
-		// }, 2000, () => {
-		// 	console.log('done')
-		// });
 
 	},
 
@@ -77,12 +77,12 @@ const game = {
 
 	},
 
-
 	startTimer() {
 		setInterval(
 
 			() => {
 				this.rollItems()
+				this.scoreUp()
 				this.clock++
 				console.log("clock " + this.clock);
 				console.log("this is new item" + this.newItem);
@@ -93,33 +93,32 @@ const game = {
 	},
 
 	rollItems () {
-		const newItem = new Item
+		const newItem = new Item()
 		this.itemEssence = newItem
-		console.log(this.itemEssence);
-		if (this.itemEssence.id === "item1") {
-			console.log("Item 1 is up");
+		
+		if (this.itemEssence.item.attr('id') === "item1") {
 			this.animateItem1()
 		}
-		if (this.itemEssence == $('#item2')) {
+		if (this.itemEssence.item.attr('id') === "item2") {
 			this.animateItem2()
-			console.log("Item 2 is up");
 
 		}
-		if (this.itemEssence == $('#item3')) {
+		if (this.itemEssence.item.attr('id') === "item3") {
 			this.animateItem3()
-			console.log("Item 3 is up");
 
 		}
-		if (this.itemEssence == $('#item4')) {
+		if (this.itemEssence.item.attr('id') === "item4") {
 			this.animateItem4()
 		}
 	},
 
 	animateItem1 () {
 			$('#item1').animate ({
-			"right": "200px",
+			"left": "200px",
 		}, 2000, () => {
 			console.log('done item1')
+
+
 		});
 	},
 
@@ -133,7 +132,7 @@ const game = {
 
 	animateItem3 () {
 			$('#item3').animate ({
-			"right": "200px",
+			"left": "200px",
 		}, 2000, () => {
 			console.log('done item3')
 		});
@@ -147,25 +146,58 @@ const game = {
 		});
 	},
 
+	touchItem1 () {
+			this.score++
+			console.log(this.score);
+			$('#score').text("Score: " + this.score )
+			$('#basket1').append($('#item1'))
+			$('#item1').stop()
+			
+	},
+
+	touchItem2 () {
+			this.score+++
+			console.log(this.score);
+			$('#score').text("Score: " + this.score )
+			$('#basket1').append($('#item2'))
+			$('#item2').stop()
+	},
+
+	touchItem3 () {
+			this.score++
+			console.log(this.score);
+			$('#score').text("Score: " + this.score )
+			$('#basket1').append($('#item3'))
+			$('#item3').stop()
+	},
+	touchItem4 () {
+			this.score+++
+			console.log(this.score);
+			$('#score').text("Score: " + this.score )
+			$('#basket1').append($('#item4'))
+			$('#item4').stop()
+			
+	},
+
 	loseLife () {
 
 	},
 
 	scoreUp () {
-		if (moveLeftUp()){
-			this.score++
-			$('#scoreboard').text("Score: " + this.score)
-			console.log(this.score);
-		}
-		if ((newItem === $('#item2')) && moveRightUp()){
-			this.score++
-		}
-		if ((newItem === $('#item3')) && moveLeftDown()){
-			this.score++
-		}
-		if ((newItem === $('#item4')) && moveRightDown()){
-			this.score++
-		}
+	// 	if (){
+	// 		this.score++
+	// 		$('#scoreboard').text("Score: " + this.score)
+	// 		console.log(this.score);
+	// 	}
+	// 	if ((newItem === $('#item2')) && moveRightUp()){
+	// 		this.score++
+	// 	}
+	// 	if ((newItem === $('#item3')) && moveLeftDown()){
+	// 		this.score++
+	// 	}
+	// 	if ((newItem === $('#item4')) && moveRightDown()){
+	// 		this.score++
+	// 	}
 	},
 
 	roundUp () {
@@ -183,11 +215,12 @@ const game = {
 
 
 	
-game.startGame();
+// game.startGame();
 // game.moveLeftUp()
 // game.scoreUp()
-game.rollItems()
+// game.rollItems()
 // game.startTimer()
+// game.makeItems()
 
 // console.log(game.itemNumber);
 
@@ -196,36 +229,47 @@ $('#game-container').on('click', (event) => {
 	console.log(event.target);
 })
 
+
+
 // $(document).keydown(function(keypressed) {
 // 	if (keypressed.keyCode == 87) {
 // 		$("#character").css("background-color", "tomato")
 // 	}
 // });
 
-$(document).keydown(function(keypressed) {
-	if (keypressed.keyCode == 65) {
-		$("#character").css("background-color", "lightsteelblue")
-	}
+// $(document).keydown(function(keypressed) {
+// 	if (keypressed.keyCode == 65) {
+// 		$("#character").css("background-color", "lightsteelblue")
+// 	}
+// });
+
+// $(document).keydown(function(keypressed) {
+// 	if (keypressed.keyCode == 80) {
+// 		$("#character").css("background-color", "yellow")
+// 	}
+// });
+
+
+// $(document).keydown(function(keypressed) {
+// 	if (keypressed.keyCode == 76) {
+// 		$("#character").css("background-color", "green")
+// 	}
+// });
+
+
+$('#item1').click(function(){
+	game.touchItem1()
 });
 
-$(document).keydown(function(keypressed) {
-	if (keypressed.keyCode == 80) {
-		$("#character").css("background-color", "yellow")
-	}
+$('#item2').click(function(){
+	game.touchItem2()
 });
 
-
-$(document).keydown(function(keypressed) {
-	if (keypressed.keyCode == 76) {
-		$("#character").css("background-color", "green")
-	}
+$('#item3').click(function(){
+	game.touchItem3()
 });
 
-
-
-
-
-
-
-
+$('#item4').click(function(){
+	game.touchItem4()
+});
 

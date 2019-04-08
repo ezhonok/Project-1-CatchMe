@@ -209,7 +209,7 @@ body {
 
 
 
-#character {
+#basket-container {
 	height: 350px;
 	width: 250px;
 	background-color: black;
@@ -218,6 +218,49 @@ body {
 	top: 25%;
 	left: 29%;
 	background-size: contain;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+}
+
+#basket1 {
+	height: 80px;
+	width: 250px;
+	background-color: pink;
+	border: solid 1px black;
+	position: relative;
+	background-size: contain;
+	color: black;
+	display: flex;
+	flex-direction: row;
+
+}
+
+#basket2 {
+	height: 80px;
+	width: 250px;
+	background-color: yellow;
+	border: solid 1px black;
+	position: relative;
+	background-size: contain;
+	color: black;
+	display: flex;
+	flex-direction: row;
+
+
+}
+
+#basket3 {
+	height: 80px;
+	width: 250px;
+	background-color: tomato;
+	border: solid 1px black;
+	position: relative;
+	background-size: contain;
+	color: black;
+	display: flex;
+	flex-direction: row;
 
 }
 
@@ -225,13 +268,14 @@ body {
 #scoreboard {
 	height: 80px;
 	width: 200px;
-	background-color: pink;
+	background-color: olive;
 	border: solid 3px black;
 	position: relative;
 	top: -129%;
 	left: 33%;
 	border-radius: 20%;
 	color: black;
+	font-size: 16px;
 
 }
 
