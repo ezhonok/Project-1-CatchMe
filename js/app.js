@@ -1,7 +1,9 @@
 console.log("O.o");
 
 
-//working on logic for score going up
+//In progress:
+//stop animation for items that are done
+//game over logic
 
 class Player {
 	constructor() {
@@ -37,7 +39,7 @@ const game = {
 	playerTwoStats: null, //will be used when player 2 is done
 
 	clock: null,
-	lives: null,
+	lives: 3,
 	round: null,
 	score: null,
 	characterEssence: null,
@@ -82,20 +84,25 @@ const game = {
 
 			() => {
 				this.rollItems()
-				this.scoreUp()
 				this.clock++
 				console.log("clock " + this.clock);
-				console.log("this is new item" + this.newItem);
+				// console.log("this is new item" + this.newItem);
 			},
 
 			1000
 			)
 	},
 
+	stopTimer() {
+		if (this.clock === 10) {
+
+		}
+	},
+
 	rollItems () {
 		const newItem = new Item()
 		this.itemEssence = newItem
-		
+
 		if (this.itemEssence.item.attr('id') === "item1") {
 			this.animateItem1()
 		}
@@ -149,7 +156,7 @@ const game = {
 	touchItem1 () {
 			this.score++
 			console.log(this.score);
-			$('#score').text("Score: " + this.score )
+			$('#score').text("Score: " + this.score)
 			$('#basket1').append($('#item1'))
 			$('#item1').stop()
 			
@@ -158,7 +165,7 @@ const game = {
 	touchItem2 () {
 			this.score+++
 			console.log(this.score);
-			$('#score').text("Score: " + this.score )
+			$('#score').text("Score: " + this.score)
 			$('#basket1').append($('#item2'))
 			$('#item2').stop()
 	},
@@ -166,46 +173,42 @@ const game = {
 	touchItem3 () {
 			this.score++
 			console.log(this.score);
-			$('#score').text("Score: " + this.score )
+			$('#score').text("Score: " + this.score)
 			$('#basket1').append($('#item3'))
 			$('#item3').stop()
 	},
 	touchItem4 () {
 			this.score+++
 			console.log(this.score);
-			$('#score').text("Score: " + this.score )
+			$('#score').text("Score: " + this.score)
 			$('#basket1').append($('#item4'))
 			$('#item4').stop()
 			
 	},
 
 	loseLife () {
-
+			this.lives--
+			$('#lives').text("Lives: " + this.lives)
+			console.log("Lives left " + this.lives);
+			if (this.lives === 0) { //something is wrong with #lives
+			console.log("game over");
+			console.log(this.lives);
+		$('#basket-container').empty()
+		$('#basket-container').text("Sorry, you are out of lives. But do try again! ")
+		}
 	},
 
-	scoreUp () {
-	// 	if (){
-	// 		this.score++
-	// 		$('#scoreboard').text("Score: " + this.score)
-	// 		console.log(this.score);
-	// 	}
-	// 	if ((newItem === $('#item2')) && moveRightUp()){
-	// 		this.score++
-	// 	}
-	// 	if ((newItem === $('#item3')) && moveLeftDown()){
-	// 		this.score++
-	// 	}
-	// 	if ((newItem === $('#item4')) && moveRightDown()){
-	// 		this.score++
-	// 	}
-	},
 
 	roundUp () {
 
 	},
 
 	loseGame () {
-
+		// if (this.lives === 0) { //something is wrong with #lives
+		// 	console.log("game over");
+		// 	console.log(this.lives);
+		// $('#game-container').remove()
+		// }
 	},
 
 	winGame () {
@@ -221,6 +224,7 @@ const game = {
 // game.rollItems()
 // game.startTimer()
 // game.makeItems()
+game.loseGame()
 
 // console.log(game.itemNumber);
 
@@ -271,5 +275,25 @@ $('#item3').click(function(){
 
 $('#item4').click(function(){
 	game.touchItem4()
+});
+
+$('#item1container').click(function(){
+	game.loseLife()
+});
+
+$('#item2container').click(function(){
+	game.loseLife()
+});
+
+$('#item3container').click(function(){
+	game.loseLife()
+});
+
+$('#item4container').click(function(){
+	game.loseLife()
+});
+
+$('#item5container').click(function(){
+	game.loseLife()
 });
 
