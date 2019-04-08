@@ -1,9 +1,19 @@
 console.log("O.o");
-
-
-//In progress:
+// Completed:
 //stop animation for items that are done
 //game over logic
+
+//In progress:
+//Creating dynamic divs using class Item
+//lose life - needs better logic
+//
+
+//To be completed
+//stop the timer after 10 seconds
+//new round
+//second player game
+//compare player stats
+//
 
 class Player {
 	constructor() {
@@ -21,17 +31,30 @@ class Item {
 	constructor() {
 		const randItem = Math.floor(Math.random() * 4)
 		this.item = [$('#item1'), $('#item2'), $('#item3'), $('#item4')][randItem]
-		// this.img = [('https://payload.cargocollective.com/1/2/71834/11021397/ATI_bird_animations_all.gif'), ('https://data.whicdn.com/images/81086916/original.gif'), ('https://colossalmedia.com/wp-content/uploads/2018/02/Heartgif.gif'), ('https://i.imgur.com/nk7l6Zi.gif')][randItem]
 	}
-	// createDiv () {
-	// 	const div = $('<div/>').addId(this.item).css({
-	// 		// 'background-img': this.img
-	// 	})
-	// 	return div
+	// createDiv1 () {
+	// 	const div1 = $('<div/>').addClass('item1')
+	// 	console.log("your div is " + div1);
+	// 	return div1
+	// }
+	// createDiv2 () {
+	// 	const div2 = $('<div/>').addClass('item2')
+	// 	console.log("your div is " + div2);
+	// 	return div2
+
+	// }
+	// createDiv3 () {
+	// 	const div3 = $('<div/>').addClass('item3')
+	// 	console.log("your div is " + div3);
+	// 	return div3
+	// }
+	// createDiv2 () {
+	// 	const div4 = $('<div/>').addClass('item4')
+	// 	console.log("your div is " + div4);
+	// 	return div4
 	// }
 
 }
-
 
 
 const game = {
@@ -44,19 +67,20 @@ const game = {
 	score: null,
 	characterEssence: null,
 	itemEssence: null,
+	timerId: null,
 	roundStarted: false,
-	currentItems: [],
+	// currentItems: [],
 
-	makeItems() {
-		console.log("makeItems called");
-		if(this.roundStarted === false) {
-			for (let i = 0; i < 4; i++) {
-				const t = new Item(i);
-				this.currentItems.push(t)
-				$('')
-			}
-		}
-	},
+	// makeItems() {
+	// 	console.log("makeItems called");
+	// 	if(this.roundStarted === false) {
+	// 		for (let i = 0; i < 4; i++) {
+	// 			const t = new Item(i);
+	// 			this.currentItems.push(t)
+	// 			$('')
+	// 		}
+	// 	}
+	// },
 
 	startGame () {
 		const alice = new Player()
@@ -65,19 +89,22 @@ const game = {
 		this.startTimer()
 		this.rollItems()
 		console.log(alice);
+		this.round++
+		$('#round').text("Round: " + this.round)
+	
 
 	},
 
 
-	moveLeftUp () {
-	$(document).keydown(function(keypressed) {
-		if (keypressed.keyCode == 87) {
-			console.log("leftUp");
-	}
+// 	moveLeftUp () {
+// 	$(document).keydown(function(keypressed) {
+// 		if (keypressed.keyCode == 87) {
+// 			console.log("leftUp");
+// 	}
 
-});
+// });
 
-	},
+	// },
 
 	startTimer() {
 		setInterval(
@@ -91,11 +118,14 @@ const game = {
 
 			1000
 			)
+		this.stopTimer()
 	},
 
 	stopTimer() {
 		if (this.clock === 10) {
-
+			$('#scoreboard').append(`Time is up!`)
+			clearInterval(this.timerId)
+			this.roundStarted = false;
 		}
 	},
 
@@ -120,32 +150,36 @@ const game = {
 	},
 
 	animateItem1 () {
+		if (this.clock % 3 === 0)
 			$('#item1').animate ({
 			"left": "200px",
 		}, 2000, () => {
 			console.log('done item1')
-
+			$('#item1container').append($('#item1'))
 
 		});
 	},
 
 	animateItem2 () {
+		if (this.clock % 2 === 0)
 			$('#item2').animate ({
 			"right": "200px",
 		}, 2000, () => {
-			console.log('done item2')
+			// console.log('done item2')
 		});
 	},
 
 	animateItem3 () {
+		if (this.clock % 4 === 0)
 			$('#item3').animate ({
 			"left": "200px",
 		}, 2000, () => {
-			console.log('done item3')
+			// console.log('done item3')
 		});
 	},
 
 	animateItem4 () {
+		if (this.clock % 5 === 0)
 			$('#item4').animate ({
 			"right": "200px",
 		}, 2000, () => {
@@ -159,11 +193,12 @@ const game = {
 			$('#score').text("Score: " + this.score)
 			$('#basket1').append($('#item1'))
 			$('#item1').stop()
+			// $('#item1').append($)
 			
 	},
 
 	touchItem2 () {
-			this.score+++
+			this.score++
 			console.log(this.score);
 			$('#score').text("Score: " + this.score)
 			$('#basket1').append($('#item2'))
@@ -178,7 +213,7 @@ const game = {
 			$('#item3').stop()
 	},
 	touchItem4 () {
-			this.score+++
+			this.score++
 			console.log(this.score);
 			$('#score').text("Score: " + this.score)
 			$('#basket1').append($('#item4'))
@@ -218,7 +253,8 @@ const game = {
 
 
 	
-// game.startGame();
+game.startGame();
+game.stopTimer()
 // game.moveLeftUp()
 // game.scoreUp()
 // game.rollItems()
@@ -277,23 +313,20 @@ $('#item4').click(function(){
 	game.touchItem4()
 });
 
-$('#item1container').click(function(){
+$('#ramp1').click(function(){
 	game.loseLife()
 });
 
-$('#item2container').click(function(){
+$('#ramp2').click(function(){
 	game.loseLife()
 });
 
-$('#item3container').click(function(){
+$('#ramp3').click(function(){
 	game.loseLife()
 });
 
-$('#item4container').click(function(){
+$('#ramp4').click(function(){
 	game.loseLife()
 });
 
-$('#item5container').click(function(){
-	game.loseLife()
-});
 
