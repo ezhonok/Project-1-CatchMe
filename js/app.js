@@ -4,7 +4,7 @@ console.log("createnewbirdcreatenewbirdcreatenewbirdcreatenewbirddddd");
 //game over logic
 //Refactoring code
 //fix animation in basket issue
-
+//remove round text from baskets upon start of the game
 
 //In progress:
 //fix Time is up message (not centered) and remove the items that keep spawning
@@ -19,7 +19,7 @@ console.log("createnewbirdcreatenewbirdcreatenewbirdcreatenewbirddddd");
 //new round - complete logic (new set of characters)
 //create logic for starting the game
 //Timer - push stats to teh scoreboard
-//remove round text from baskets upon 
+
 
 
 //If time allows:
@@ -121,6 +121,12 @@ const game = {
 	createNewBird () {
 		const $newBird = $('<div id="item1">')
 		$('#item1container').append($newBird)
+		$('#item1').on('click', function(event) {
+		if (game.birdFalling === true) {
+		game.touchItem1()
+			}
+
+		})
 	},
 
 	createBirdForBasket () {
@@ -131,8 +137,15 @@ const game = {
 	createNewPlatipuss () {
 		const $newPlatipuss = $('<div id="item2">')
 		$('#item2container').append($newPlatipuss)
+		$('#item2').on('click', function(event) {
+		if (game.platipussFalling === true) {
+		game.touchItem2()
+			}
+
+		})
 
 	},
+
 	createPlatipussForBasket () {
 		const $newBasketPlatipuss = $('<div id="item22">')
 		$('#basket1').append($newBasketPlatipuss)
@@ -141,6 +154,12 @@ const game = {
 	createNewPup () {
 		const $newPup = $('<div id="item3">')
 		$('#item3container').append($newPup)
+		$('#item3').on('click', function(event) {
+		if (game.pupFalling === true) {
+		game.touchItem3()
+			}
+
+		})
 
 	},
 
@@ -152,7 +171,13 @@ const game = {
 	createNewHeart () { 
 		const $newHeart = $('<div id="item4">')
 		$('#item4container').append($newHeart)
+		$('#item4').on('click', function(event) {
+		console.log(event.target);
+		if (game.heartFalling === true) {
+		game.touchItem4()
+			}
 
+		})
 	},
 
 	createHeartForBasket () {
@@ -194,6 +219,7 @@ const game = {
 				this.birdFalling = false
 				$('#item1').remove()
 				this.createNewBird();
+
 			});
 		}
 	},
