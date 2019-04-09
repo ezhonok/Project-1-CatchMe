@@ -49,26 +49,24 @@ body {
 	
 }
 
-.item1 {
+#item1 {
 	height: 80px;
 	width: 70px;
 	background-image: url("https://payload.cargocollective.com/1/2/71834/11021397/ATI_bird_animations_all.gif");
 	background-size: 100% 100%;
 	position: relative;
-	/*animation-duration: .7s;
-	animation-name: bounce;*/
+
 }
-/*
-@keyframes bounce {
-	from {
-		margin-left: 100%;
-		width: 300%;
-	}
-	to {
-		margin-left: 0%;
-		width: 100%;
-	}
-}*/
+
+
+#item11 {
+	height: 80px;
+	width: 70px;
+	background-image: url("https://payload.cargocollective.com/1/2/71834/11021397/ATI_bird_animations_all.gif");
+	background-size: 100% 100%;
+	position: relative;
+
+}
 
 #right-top-corner-container {
 	height: 100px;
@@ -97,12 +95,19 @@ body {
 	display: flex;
 	flex-direction: column-reverse;
 
-/*	border-radius: 20%;
-*/	/*top: -68%;
-	left: 86%;*/
 }
 
-.item2 {
+#item2 {
+	height: 80px;
+	width: 70px;
+	position: relative;
+	align-self: flex-end;
+	background-image: url("https://data.whicdn.com/images/81086916/original.gif");
+	background-size: 100% 100%;
+	/*left: 40%;*/
+}
+
+#item22 {
 	height: 80px;
 	width: 70px;
 	position: relative;
@@ -148,7 +153,15 @@ body {
 	left: 74%;*/
 }
 
-.item3 {
+#item3 {
+	height: 80px;
+	width: 70px;
+	background-image: url("https://i.imgur.com/nk7l6Zi.gif");
+	background-size: 100% 100%;
+	position: relative;
+}
+
+#item33 {
 	height: 80px;
 	width: 70px;
 	background-image: url("https://i.imgur.com/nk7l6Zi.gif");
@@ -192,7 +205,16 @@ body {
 
 }
 
-.item4 {
+#item4 {
+	height: 80px;
+	width: 70px;
+	align-self: flex-end;
+	background-image: url("https://colossalmedia.com/wp-content/uploads/2018/02/Heartgif.gif");
+	background-size: 100% 100%;
+	position: relative;
+}
+
+#item44 {
 	height: 80px;
 	width: 70px;
 	align-self: flex-end;

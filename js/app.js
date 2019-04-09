@@ -1,25 +1,35 @@
-console.log("O.o");
+console.log("createnewbirdcreatenewbirdcreatenewbirdcreatenewbirddddd");
 // Completed:
 //stop animation for items that are done
 //game over logic
+//Refactoring code
 
 //In progress:
-//Refactoring code
-//lose life - needs better logic
-//
+//Fix: only the first item that gets clicked appends to basket
+
 
 //To be completed:
-//stop the timer after 10 seconds
-//new round - complete logic
+//fix logic for stopping the timer (clearInterval isnt working)
+//fix Time is up message (not centered) and remove the items that keep spawning
+//new round - complete logic (new set of characters)
+//lose life - needs better logic
+//fix animation in basket issue
+//create logic for starting the game
+//Timer - push stats to teh scoreboard
+
+
+//If time allows:
 //second player game
 //compare player stats
-//
+//create logic for win game
 
 
 //GAME: Help your friends Escape to safety! Round 1 - practice; Round 2 - pets; Round 3 - knowledge
-//You got a telegram (lol if you don't know what that is) saying your friends have been 
+//You got a telegram saying your friends have been 
 //captured by evil ... They are planning a mass escape. Are you prepared to help them
 //get to safety? 
+
+
 
 class Player {
 	constructor() {
@@ -31,15 +41,10 @@ class Player {
 
 }
 
-
-
 class Item {
 	constructor(number) {
-		this.number = number;
-		// this.item = [$('.character-container .item1'), $('.character-container .item2'), $('.character-container .item3'), $('.character-container .item4')][randItem]
-	
+		this.number = number;	
 	}
-
 
 }
 
@@ -60,6 +65,7 @@ const game = {
 	platipussFalling: false,
 	pupFalling: false,
 	heartFalling: false,
+	cancelAnimation: false,
 
 
 	startGame () {
@@ -72,25 +78,21 @@ const game = {
 		this.round++
 		$('#round').text("Round: " + this.round)
 	
-
 	},
 
 
 	startTimer() {
 		setInterval(
 
-			() => {
-				this.rollItems()
-				this.clock++
+			() => {	
 				console.log("clock " + this.clock);
-				// console.log("this is new item" + this.newItem);
+				this.clock++
+				this.rollItems()
 				this.stopTimer()
 			},
 
 			1000
 			)
-		
-		
 	},
 
 	stopTimer() {
@@ -107,26 +109,45 @@ const game = {
 	},
 
 	createNewBird () {
-		const $newBird = $('<div class="item1">')
+		const $newBird = $('<div id="item1">')
 		$('#left-top-corner-container .character-container').append($newBird)
 	},
 
+	createBirdForBasket () {
+		const $newBasketBird = $('<div id="item11">')
+		$('#basket1').append($newBasketBird)
+	},
+
 	createNewPlatipuss () {
-		const $newPlatipuss = $('<div class="item2">')
+		const $newPlatipuss = $('<div id="item2">')
 		$('#right-top-corner-container .character-container').append($newPlatipuss)
 
 	},
+	createPlatipussForBasket () {
+		const $newBasketPlatipuss = $('<div id="item22">')
+		$('#basket1').append($newBasketPlatipuss)
+	},
 
 	createNewPup () {
-		const $newPup = $('<div class="item3">')
+		const $newPup = $('<div id="item3">')
 		$('#left-botom-corner-container .character-container').append($newPup)
 
 	},
 
+	createPupForBasket () {
+		const $newBasketPup = $('<div id="item33">')
+		$('#basket1').append($newBasketPup)
+	},
+
 	createNewHeart () { 
-		const $newHeart = $('<div class="item4">')
+		const $newHeart = $('<div id="item4">')
 		$('#right-bottom-corner-container .character-container').append($newHeart)
 
+	},
+
+	createHeartForBasket () {
+		const $newBasketHeart = $('<div id="item44">')
+		$('#basket1').append($newBasketHeart)
 	},
 
 	rollItems () {
@@ -154,61 +175,53 @@ const game = {
 
 	},
 
-	animateItem1 () { console.log("1")
+	animateItem1 () { 
 		if (this.clock % 2 === 0) {
 			this.birdFalling = true
-			$('.character-container .item1').animate ({
+			$('#item1').animate ({
 			"left": "200px",
-			}, 3000, () => {
-				console.log('done item1')
-			
+			}, 3000, () => {			
 				this.birdFalling = false
-				// move old bird to correct basket
-				$('.character-container .item1').remove()
-
+				$('#item1').remove()
 				this.createNewBird();
-
 			});
 		}
 	},
 
-	animateItem2 () { console.log("2")
+	animateItem2 () { 
 		if (this.clock % 2 === 0) {
 			this.platipussFalling = true
-			$('.character-container .item2').animate ({
+			$('#item2').animate ({
 				"right": "200px",
 			}, 3000, () => {
 				platipussFalling = false
-				$('.character-container .item2').remove()
+				$('#item2').remove()
 				this.createNewPlatipuss()
 			});
 		}
 	},
 
-	animateItem3 () { console.log("3")
+	animateItem3 () { 
 		if (this.clock % 2 === 0){
 			this.pupFalling = true
-			$('.character-container .item3').animate ({
+			$('#item3').animate ({
 				"left": "200px",
 			}, 3000, () => {
 				this.pupFalling = false
-				$('.character-container .item3').remove()
+				$('#item3').remove()
 				this.createNewPup()
-
 			});
 		}
 	},
 
-	animateItem4 () { console.log("4")
+	animateItem4 () {
 		if (this.clock % 2 === 0) {
 			this.heartFalling = true
-			$('.character-container .item4').animate ({
+			$('#item4').animate ({
 				"right": "200px",
 			}, 3000, () => {
 				this.heartFalling = false
-				$('.character-container .item4').remove()
-
-				console.log('done item4')
+				$('#item4').remove()
 				this.createNewHeart()
 			});
 		}
@@ -216,39 +229,44 @@ const game = {
 
 	touchItem1 () { 
 			this.score++
-			// console.log(this.score);
 			$('#score').text("Score: " + this.score)
-			$('.character-container .item1').stop()
-			console.log('append')
-			$('#basket1').append($('.character-container .item1'))
+			this.createBirdForBasket()
+			$('#item1').remove()
+			// $('#item1').stop()
+			// $('#basket1').append($('#item1'))
 			this.createNewBird()
-			// $('#item1').append($)
 			
 	},
 
 	touchItem2 () {
 			this.score++
-			console.log(this.score);
 			$('#score').text("Score: " + this.score)
-			$('#basket1').append($('.character-container .item2'))
-			$('.character-container .item2').stop()
+			this.createPlatipussForBasket()
+			$('#item2').remove()
+			// $('#item2').stop()
+			// $('#basket1').append($('#item2'))
 			this.createNewPlatipuss()
 	},
 
 	touchItem3 () {
 			this.score++
-			console.log(this.score);
 			$('#score').text("Score: " + this.score)
-			$('#basket1').append($('.character-container .item3'))
-			$('.character-container .item3').stop()
+			this.createPupForBasket()
+			$('#item3').remove()
+			// $('#item3').stop()
+			// $('#basket1').append($('#item3'))
+			
 			this.createNewPup()
 	},
 	touchItem4 () {
 			this.score++
-			console.log(this.score);
 			$('#score').text("Score: " + this.score)
-			$('#basket1').append($('.character-container .item4'))
-			$('.character-container .item4').stop()
+			this.createHeartForBasket()
+			$('#item4').remove()
+			// $('#item4').stop()
+			// $('#basket1').append($('#item4'))
+			
+			
 			this.createNewHeart()
 			
 	},
@@ -256,10 +274,7 @@ const game = {
 	loseLife () {
 			this.lives--
 			$('#lives').text("Lives: " + this.lives)
-			console.log("Lives left " + this.lives);
 			if (this.lives === 0) { 
-			console.log("game over");
-			console.log(this.lives);
 			$('#basket-container').empty()
 			$('#basket-container').text("Aw buddy you let them down... Wanna try again?")
 		}
@@ -271,11 +286,9 @@ const game = {
 	},
 
 	loseGame () {
-		// if (this.lives === 0) { //something is wrong with #lives
-		// 	console.log("game over");
-		// 	console.log(this.lives);
-		// $('#game-container').remove()
-		// }
+		if (this.lives === 0) { 
+		$('#game-container').remove()
+		}
 	},
 
 	winGame () {
@@ -285,7 +298,7 @@ const game = {
 
 
 	
-game.startGame();
+// game.startGame();
 // game.stopTimer()
 // game.moveLeftUp()
 // game.scoreUp()
@@ -298,7 +311,7 @@ game.startGame();
 
 
 
-$('.item1').on('click', function(event) {
+$('#item1').on('click', function(event) {
 	console.log(event.target);
 	if (game.birdFalling === true) {
 		game.touchItem1()
@@ -306,7 +319,7 @@ $('.item1').on('click', function(event) {
 
 })
 
-$('.item1').on('click', function(event) {
+$('#item2').on('click', function(event) {
 	console.log(event.target);
 	if (game.platipussFalling === true) {
 		game.touchItem2()
@@ -314,15 +327,15 @@ $('.item1').on('click', function(event) {
 
 })
 
-$('.item1').on('click', function(event) {
+$('#item3').on('click', function(event) {
 	console.log(event.target);
-	if (game.Falling === true) {
+	if (game.pupFalling === true) {
 		game.touchItem3()
 	}
 
 })
 
-$('.item1').on('click', function(event) {
+$('#item4').on('click', function(event) {
 	console.log(event.target);
 	if (game.heartFalling === true) {
 		game.touchItem4()
