@@ -259,6 +259,7 @@ body {
 	display: flex;
 	flex-direction: row;
 	overflow: hidden;
+	position: relative;
 
 }
 
@@ -273,7 +274,7 @@ body {
 	display: flex;
 	flex-direction: row;
 	overflow: hidden;
-
+	position: relative;	
 
 }
 
@@ -288,6 +289,7 @@ body {
 	display: flex;
 	flex-direction: row;
 	overflow: hidden;
+	position: relative;
 	/*border-radius: 20%;*/
 
 }
@@ -310,4 +312,25 @@ body {
 
 
 }
+
+#exit {
+	height: 80px;
+	width: 250px;
+	/*background-color: tomato;*/
+	/*border: solid 1px black;*/
+	position: relative;
+	background-size: contain;
+	color: black;
+	display: flex;
+	flex-direction: row;
+	overflow: hidden;
+}
+
+
+
+
+
+
+
+
 

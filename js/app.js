@@ -3,19 +3,23 @@ console.log("createnewbirdcreatenewbirdcreatenewbirdcreatenewbirddddd");
 //stop animation for items that are done
 //game over logic
 //Refactoring code
+//fix animation in basket issue
+
 
 //In progress:
-//Fix: only the first item that gets clicked appends to basket
+//fix Time is up message (not centered) and remove the items that keep spawning
+//Improve end of round logic
+//fix animation for end of round basket
 
 
 //To be completed:
-//fix logic for stopping the timer (clearInterval isnt working)
-//fix Time is up message (not centered) and remove the items that keep spawning
-//new round - complete logic (new set of characters)
+//Fix: only the initial item that gets clicked appends to basket
 //lose life - needs better logic
-//fix animation in basket issue
+//fix logic for stopping the timer (clearInterval isnt working)
+//new round - complete logic (new set of characters)
 //create logic for starting the game
 //Timer - push stats to teh scoreboard
+//remove round text from baskets upon 
 
 
 //If time allows:
@@ -77,6 +81,7 @@ const game = {
 		console.log(alice);
 		this.round++
 		$('#round').text("Round: " + this.round)
+		$('#basket1').empty()
 	
 	},
 
@@ -98,19 +103,24 @@ const game = {
 	stopTimer() {
 		if (this.clock === 10) {
 			$('#scoreboard').empty()
-			$('#scoreboard').append(`Time is up!`).css('font-size', '30px')
-			// $('#item1container').remove()
-			// $('#item2container').remove()
-			// $('#item3container').remove()
-			// $('#item4container').remove()
+			$('#scoreboard').append(`Time is up!`).css('font-size', '30px', 'display')
+			$('#item1container').remove()
+			$('#item2container').remove()
+			$('#item3container').remove()
+			$('#item4container').remove()
 			clearInterval(this.timerId)
 			this.roundStarted = false;
+			this.resultRound1()
 		}
 	},
 
+
+//what is broken when new item gets created?
+//I need it to use the touch function 
+
 	createNewBird () {
 		const $newBird = $('<div id="item1">')
-		$('#left-top-corner-container .character-container').append($newBird)
+		$('#item1container').append($newBird)
 	},
 
 	createBirdForBasket () {
@@ -120,7 +130,7 @@ const game = {
 
 	createNewPlatipuss () {
 		const $newPlatipuss = $('<div id="item2">')
-		$('#right-top-corner-container .character-container').append($newPlatipuss)
+		$('#item2container').append($newPlatipuss)
 
 	},
 	createPlatipussForBasket () {
@@ -130,7 +140,7 @@ const game = {
 
 	createNewPup () {
 		const $newPup = $('<div id="item3">')
-		$('#left-botom-corner-container .character-container').append($newPup)
+		$('#item3container').append($newPup)
 
 	},
 
@@ -141,7 +151,7 @@ const game = {
 
 	createNewHeart () { 
 		const $newHeart = $('<div id="item4">')
-		$('#right-bottom-corner-container .character-container').append($newHeart)
+		$('#item4container').append($newHeart)
 
 	},
 
@@ -232,9 +242,8 @@ const game = {
 			$('#score').text("Score: " + this.score)
 			this.createBirdForBasket()
 			$('#item1').remove()
-			// $('#item1').stop()
-			// $('#basket1').append($('#item1'))
-			this.createNewBird()
+
+			// this.createNewBird()
 			
 	},
 
@@ -243,9 +252,7 @@ const game = {
 			$('#score').text("Score: " + this.score)
 			this.createPlatipussForBasket()
 			$('#item2').remove()
-			// $('#item2').stop()
-			// $('#basket1').append($('#item2'))
-			this.createNewPlatipuss()
+			// this.createNewPlatipuss()
 	},
 
 	touchItem3 () {
@@ -253,22 +260,45 @@ const game = {
 			$('#score').text("Score: " + this.score)
 			this.createPupForBasket()
 			$('#item3').remove()
-			// $('#item3').stop()
-			// $('#basket1').append($('#item3'))
 			
-			this.createNewPup()
+			// this.createNewPup()
 	},
 	touchItem4 () {
 			this.score++
 			$('#score').text("Score: " + this.score)
 			this.createHeartForBasket()
 			$('#item4').remove()
-			// $('#item4').stop()
-			// $('#basket1').append($('#item4'))
 			
+			// this.createNewHeart()
 			
-			this.createNewHeart()
+	},
+
+	resultRound1 () {
+			if (this.clock === 12) {
+			$('#basket1').animate ({
+				"down": "700px",
+			}, 7000, () => {
+				// $('#exit').append($basket1)	
+			});
+		}
 			
+			// $('#basket1').animate ({
+			// 	"down": "500px",
+			// }, 10000, () => {
+				
+			
+				
+			// });
+		// }
+
+
+// 		if (this.clock === 10) {
+// 			$('#exit').animate ({
+// 				"down": "500px",
+// 			}, 3000  $('#exit').append($basket1)
+// );
+// 		}
+		
 	},
 
 	loseLife () {
@@ -276,7 +306,7 @@ const game = {
 			$('#lives').text("Lives: " + this.lives)
 			if (this.lives === 0) { 
 			$('#basket-container').empty()
-			$('#basket-container').text("Aw buddy you let them down... Wanna try again?")
+			$('#basket-container').text("Aw buddy you are out of lives >.<... Wanna try again?")
 		}
 	},
 
@@ -298,21 +328,18 @@ const game = {
 
 
 	
-// game.startGame();
+game.startGame();
 // game.stopTimer()
 // game.moveLeftUp()
-// game.scoreUp()
-// game.rollItems()
-// game.startTimer()
-// game.makeItems()
 // game.loseGame()
-// game.createNewBird()
+
 
 
 
 
 $('#item1').on('click', function(event) {
 	console.log(event.target);
+	console.log("YOU TOUCHED ME");
 	if (game.birdFalling === true) {
 		game.touchItem1()
 	}
