@@ -1,7 +1,19 @@
 body {
-	background-color: lightsteelblue;
+	background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ce97f1a0-afed-4df6-a09c-cd1c8b98da41/d2qqqxl-49b9bd24-fb84-4673-9b6e-685977a2d9fb.jpg/v1/fill/w_1600,h_1067,q_75,strp/into_the_forest_by_dreamca7cher_d2qqqxl-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA2NyIsInBhdGgiOiJcL2ZcL2NlOTdmMWEwLWFmZWQtNGRmNi1hMDljLWNkMWM4Yjk4ZGE0MVwvZDJxcXF4bC00OWI5YmQyNC1mYjg0LTQ2NzMtOWI2ZS02ODU5NzdhMmQ5ZmIuanBnIiwid2lkdGgiOiI8PTE2MDAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.svCALlA1EYe67PmmjMmTsTP5LqeXkjzjS60ilY7iNtA');
 }
 
+
+#door {
+	height: 200px;
+	width: 150px;
+	/*border: solid 3px black;*/
+	/*background-color: gray;*/
+	background-image: url('http://pngimg.com/uploads/door/door_PNG17558.png');
+	background-size: 100% 100%;
+	left: 800px;
+	top: 150px;
+	position: relative;
+}
 
 #game-container {
 	height: 600px;
@@ -10,13 +22,15 @@ body {
 	border-radius: 20%;
 	background-color: gray;
 	color: ivory;
+	position: relative;
+	top: -100px;
 }
 
 #left-top-corner-container {
 	height: 100px;
 	width: 150px;
 	/*background-color: black;*/
-	border: solid 1px black;
+	/*border: solid 1px black;*/
 	position: relative;
 	top: -39%;
 	left: 0%;
@@ -35,7 +49,7 @@ body {
 #ramp1 {
 	height: 10px;
 	width: 150px;
-	background-color: green;
+	background-color: black;
 
 
 }
@@ -72,10 +86,10 @@ body {
 	height: 100px;
 	width: 150px;
 	/*background-color: black;*/
-	border: solid 1px black;
+	/*border: solid 1px black;*/
 	position: relative;
 	top: -56%;
-	left: 74%;
+	left: 75%;
 	-webkit-transform: skewY(-20deg);
 	-moz-transform: skewY(-20deg);
 	-ms-transform: skewY(-20deg);
@@ -120,14 +134,14 @@ body {
 #ramp2 {
 	height: 10px;
 	width: 150px;
-	background-color: green;
+	background-color: black;
 }
 
 #left-bottom-corner-container {
 	height: 100px;
 	width: 150px;
 	/*background-color: black;*/
-	border: solid 1px black;
+	/*border: solid 1px black;*/
 	position: relative;
 	top: -33%;
 	left: 0%;
@@ -172,17 +186,17 @@ body {
 #ramp3 {
 	height: 10px;
 	width: 150px;
-	background-color: green;
+	background-color: black;
 }
 
 #right-bottom-corner-container {
 	height: 100px;
 	width: 150px;
 	/*background-color: black;*/
-	border: solid 1px black;
+	/*border: solid 1px black;*/
 	position: relative;
 	top: -51%;
-	left: 74%;
+	left: 75%;
 	-webkit-transform: skewY(-20deg);
 	-moz-transform: skewY(-20deg);
 	-ms-transform: skewY(-20deg);
@@ -195,15 +209,15 @@ body {
 	overflow: hidden;
 }
 
-.character-container {
+/*#character-container1 {
 	height: 80px;
 	width: 150px;
-	/*background-color: blue;*/
+	background-color: blue;
 	position: relative;
 	display: flex;
 	flex-direction: column-reverse;
 
-}
+}*/
 
 #item4 {
 	height: 80px;
@@ -226,7 +240,7 @@ body {
 #ramp4 {
 	height: 10px;
 	width: 150px;
-	background-color: green;
+	background-color: black;
 }
 
 

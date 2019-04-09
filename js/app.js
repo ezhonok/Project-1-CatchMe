@@ -5,20 +5,22 @@ console.log("createnewbirdcreatenewbirdcreatenewbirdcreatenewbirddddd");
 //Refactoring code
 //fix animation in basket issue
 //remove round text from baskets upon start of the game
+//Fix: only the initial item that gets clicked appends to basket
 
 //In progress:
-//fix Time is up message (not centered) and remove the items that keep spawning
+
 //Improve end of round logic
 //fix animation for end of round basket
+//lose life - needs better logic
 
 
 //To be completed:
-//Fix: only the initial item that gets clicked appends to basket
-//lose life - needs better logic
-//fix logic for stopping the timer (clearInterval isnt working)
+//fix Time is up message (not centered)
+
+
+///create logic for starting the game
 //new round - complete logic (new set of characters)
-//create logic for starting the game
-//Timer - push stats to teh scoreboard
+//Timer - push stats to the scoreboard
 
 
 
@@ -60,7 +62,7 @@ const game = {
 	clock: null,
 	lives: 3,
 	round: null,
-	score: null,
+	score: 0,
 	characterEssence: null,
 	itemEssence: null,
 	timerId: null,
@@ -70,6 +72,7 @@ const game = {
 	pupFalling: false,
 	heartFalling: false,
 	cancelAnimation: false,
+	releaseDudes: false,
 
 
 	startGame () {
@@ -101,9 +104,9 @@ const game = {
 	},
 
 	stopTimer() {
-		if (this.clock === 10) {
+		if (this.clock === 15) {
 			$('#scoreboard').empty()
-			$('#scoreboard').append(`Time is up!`).css('font-size', '30px', 'display')
+			$('#scoreboard').append(`Time is up! You saved ${this.score} innocent souls!`).css('font-size', '25px')
 			$('#item1container').remove()
 			$('#item2container').remove()
 			$('#item3container').remove()
@@ -300,14 +303,25 @@ const game = {
 	},
 
 	resultRound1 () {
-			if (this.clock === 12) {
+			if (this.clock === 16) {
 			$('#basket1').animate ({
-				"down": "700px",
-			}, 7000, () => {
-				// $('#exit').append($basket1)	
+				"left": "700px",
+			}, 7000, () => { console.log('done');
+				
 			});
-		}
+			// $('#exit').append($basket1)	
+			}
+		},
+
+	releaseDudes () {
+			// this.releaseDudes = true;
+			$('#item11').animate ({
+				"left": "100px",
+			}, 7000, () => { console.log('done');
+				
+			});
 			
+	
 			// $('#basket1').animate ({
 			// 	"down": "500px",
 			// }, 10000, () => {
@@ -410,9 +424,12 @@ $('#ramp1').click(function(){
 	game.loseLife()
 });
 
+
 $('#ramp2').click(function(){
 	game.loseLife()
 });
+
+
 
 $('#ramp3').click(function(){
 	game.loseLife()
@@ -421,5 +438,17 @@ $('#ramp3').click(function(){
 $('#ramp4').click(function(){
 	game.loseLife()
 });
+
+
+
+$('#basket1').on('click', function(event) {
+	console.log("you touched basket1");
+	// if (game.releaseDudes === true) {
+		game.releaseDudes()
+	// }
+
+})
+
+
 
 
