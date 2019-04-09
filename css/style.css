@@ -49,7 +49,7 @@ body {
 	
 }
 
-#item1 {
+.item1 {
 	height: 80px;
 	width: 70px;
 	background-image: url("https://payload.cargocollective.com/1/2/71834/11021397/ATI_bird_animations_all.gif");
@@ -102,7 +102,7 @@ body {
 	left: 86%;*/
 }
 
-#item2 {
+.item2 {
 	height: 80px;
 	width: 70px;
 	position: relative;
@@ -148,7 +148,7 @@ body {
 	left: 74%;*/
 }
 
-#item3 {
+.item3 {
 	height: 80px;
 	width: 70px;
 	background-image: url("https://i.imgur.com/nk7l6Zi.gif");
@@ -182,7 +182,7 @@ body {
 	overflow: hidden;
 }
 
-#item4container {
+.character-container {
 	height: 80px;
 	width: 150px;
 	/*background-color: blue;*/
@@ -192,7 +192,7 @@ body {
 
 }
 
-#item4 {
+.item4 {
 	height: 80px;
 	width: 70px;
 	align-self: flex-end;
@@ -222,6 +222,7 @@ body {
 	flex-direction: column;
 	justify-content: space-between;
 	font-size: 25px;
+	font-family: 'Special Elite', cursive;
 
 }
 
@@ -265,12 +266,13 @@ body {
 	display: flex;
 	flex-direction: row;
 	overflow: hidden;
+	/*border-radius: 20%;*/
 
 }
 
 
 #scoreboard {
-	height: 80px;
+	height: 100px;
 	width: 200px;
 	background-color: olive;
 	border: solid 3px black;
@@ -280,6 +282,10 @@ body {
 	border-radius: 20%;
 	color: black;
 	font-size: 16px;
+	font-family: 'Special Elite', cursive;
+	display: flex;
+	flex-direction: column;
+
 
 }
 

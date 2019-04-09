@@ -4,16 +4,22 @@ console.log("O.o");
 //game over logic
 
 //In progress:
-//Creating dynamic divs using class Item
+//Refactoring code
 //lose life - needs better logic
 //
 
-//To be completed
+//To be completed:
 //stop the timer after 10 seconds
-//new round
+//new round - complete logic
 //second player game
 //compare player stats
 //
+
+
+//GAME: Help your friends Escape to safety! Round 1 - practice; Round 2 - pets; Round 3 - knowledge
+//You got a telegram (lol if you don't know what that is) saying your friends have been 
+//captured by evil ... They are planning a mass escape. Are you prepared to help them
+//get to safety? 
 
 class Player {
 	constructor() {
@@ -28,31 +34,12 @@ class Player {
 
 
 class Item {
-	constructor() {
-		const randItem = Math.floor(Math.random() * 4)
-		this.item = [$('#item1'), $('#item2'), $('#item3'), $('#item4')][randItem]
+	constructor(number) {
+		this.number = number;
+		// this.item = [$('.character-container .item1'), $('.character-container .item2'), $('.character-container .item3'), $('.character-container .item4')][randItem]
+	
 	}
-	// createDiv1 () {
-	// 	const div1 = $('<div/>').addClass('item1')
-	// 	console.log("your div is " + div1);
-	// 	return div1
-	// }
-	// createDiv2 () {
-	// 	const div2 = $('<div/>').addClass('item2')
-	// 	console.log("your div is " + div2);
-	// 	return div2
 
-	// }
-	// createDiv3 () {
-	// 	const div3 = $('<div/>').addClass('item3')
-	// 	console.log("your div is " + div3);
-	// 	return div3
-	// }
-	// createDiv2 () {
-	// 	const div4 = $('<div/>').addClass('item4')
-	// 	console.log("your div is " + div4);
-	// 	return div4
-	// }
 
 }
 
@@ -69,18 +56,11 @@ const game = {
 	itemEssence: null,
 	timerId: null,
 	roundStarted: false,
-	// currentItems: [],
+	birdFalling: false,
+	platipussFalling: false,
+	pupFalling: false,
+	heartFalling: false,
 
-	// makeItems() {
-	// 	console.log("makeItems called");
-	// 	if(this.roundStarted === false) {
-	// 		for (let i = 0; i < 4; i++) {
-	// 			const t = new Item(i);
-	// 			this.currentItems.push(t)
-	// 			$('')
-	// 		}
-	// 	}
-	// },
 
 	startGame () {
 		const alice = new Player()
@@ -96,16 +76,6 @@ const game = {
 	},
 
 
-// 	moveLeftUp () {
-// 	$(document).keydown(function(keypressed) {
-// 		if (keypressed.keyCode == 87) {
-// 			console.log("leftUp");
-// 	}
-
-// });
-
-	// },
-
 	startTimer() {
 		setInterval(
 
@@ -114,85 +84,144 @@ const game = {
 				this.clock++
 				console.log("clock " + this.clock);
 				// console.log("this is new item" + this.newItem);
+				this.stopTimer()
 			},
 
 			1000
 			)
-		this.stopTimer()
+		
+		
 	},
 
 	stopTimer() {
 		if (this.clock === 10) {
-			$('#scoreboard').append(`Time is up!`)
+			$('#scoreboard').empty()
+			$('#scoreboard').append(`Time is up!`).css('font-size', '30px')
+			// $('#item1container').remove()
+			// $('#item2container').remove()
+			// $('#item3container').remove()
+			// $('#item4container').remove()
 			clearInterval(this.timerId)
 			this.roundStarted = false;
 		}
 	},
 
+	createNewBird () {
+		const $newBird = $('<div class="item1">')
+		$('#left-top-corner-container .character-container').append($newBird)
+	},
+
+	createNewPlatipuss () {
+		const $newPlatipuss = $('<div class="item2">')
+		$('#right-top-corner-container .character-container').append($newPlatipuss)
+
+	},
+
+	createNewPup () {
+		const $newPup = $('<div class="item3">')
+		$('#left-botom-corner-container .character-container').append($newPup)
+
+	},
+
+	createNewHeart () { 
+		const $newHeart = $('<div class="item4">')
+		$('#right-bottom-corner-container .character-container').append($newHeart)
+
+	},
+
 	rollItems () {
-		const newItem = new Item()
+
+		const randItem = Math.floor((Math.random() * 4) + 1)
+		console.log(randItem)
+		const newItem = new Item(randItem)
 		this.itemEssence = newItem
 
-		if (this.itemEssence.item.attr('id') === "item1") {
+		if(this.itemEssence.number === 1) {
 			this.animateItem1()
 		}
-		if (this.itemEssence.item.attr('id') === "item2") {
+
+		if(this.itemEssence.number === 2) {
 			this.animateItem2()
+			}
 
-		}
-		if (this.itemEssence.item.attr('id') === "item3") {
+		if(this.itemEssence.number === 3) {
 			this.animateItem3()
-
 		}
-		if (this.itemEssence.item.attr('id') === "item4") {
+
+		if(this.itemEssence.number === 4) {
 			this.animateItem4()
 		}
+
 	},
 
-	animateItem1 () {
-		if (this.clock % 3 === 0)
-			$('#item1').animate ({
+	animateItem1 () { console.log("1")
+		if (this.clock % 2 === 0) {
+			this.birdFalling = true
+			$('.character-container .item1').animate ({
 			"left": "200px",
-		}, 2000, () => {
-			console.log('done item1')
-			$('#item1container').append($('#item1'))
+			}, 3000, () => {
+				console.log('done item1')
+			
+				this.birdFalling = false
+				// move old bird to correct basket
+				$('.character-container .item1').remove()
 
-		});
+				this.createNewBird();
+
+			});
+		}
 	},
 
-	animateItem2 () {
-		if (this.clock % 2 === 0)
-			$('#item2').animate ({
-			"right": "200px",
-		}, 2000, () => {
-			// console.log('done item2')
-		});
+	animateItem2 () { console.log("2")
+		if (this.clock % 2 === 0) {
+			this.platipussFalling = true
+			$('.character-container .item2').animate ({
+				"right": "200px",
+			}, 3000, () => {
+				platipussFalling = false
+				$('.character-container .item2').remove()
+				this.createNewPlatipuss()
+			});
+		}
 	},
 
-	animateItem3 () {
-		if (this.clock % 4 === 0)
-			$('#item3').animate ({
-			"left": "200px",
-		}, 2000, () => {
-			// console.log('done item3')
-		});
+	animateItem3 () { console.log("3")
+		if (this.clock % 2 === 0){
+			this.pupFalling = true
+			$('.character-container .item3').animate ({
+				"left": "200px",
+			}, 3000, () => {
+				this.pupFalling = false
+				$('.character-container .item3').remove()
+				this.createNewPup()
+
+			});
+		}
 	},
 
-	animateItem4 () {
-		if (this.clock % 5 === 0)
-			$('#item4').animate ({
-			"right": "200px",
-		}, 2000, () => {
-			console.log('done item4')
-		});
+	animateItem4 () { console.log("4")
+		if (this.clock % 2 === 0) {
+			this.heartFalling = true
+			$('.character-container .item4').animate ({
+				"right": "200px",
+			}, 3000, () => {
+				this.heartFalling = false
+				$('.character-container .item4').remove()
+
+				console.log('done item4')
+				this.createNewHeart()
+			});
+		}
 	},
 
-	touchItem1 () {
+	touchItem1 () { 
 			this.score++
-			console.log(this.score);
+			// console.log(this.score);
 			$('#score').text("Score: " + this.score)
-			$('#basket1').append($('#item1'))
-			$('#item1').stop()
+			$('.character-container .item1').stop()
+			console.log('append')
+			$('#basket1').append($('.character-container .item1'))
+			this.createNewBird()
 			// $('#item1').append($)
 			
 	},
@@ -201,23 +230,26 @@ const game = {
 			this.score++
 			console.log(this.score);
 			$('#score').text("Score: " + this.score)
-			$('#basket1').append($('#item2'))
-			$('#item2').stop()
+			$('#basket1').append($('.character-container .item2'))
+			$('.character-container .item2').stop()
+			this.createNewPlatipuss()
 	},
 
 	touchItem3 () {
 			this.score++
 			console.log(this.score);
 			$('#score').text("Score: " + this.score)
-			$('#basket1').append($('#item3'))
-			$('#item3').stop()
+			$('#basket1').append($('.character-container .item3'))
+			$('.character-container .item3').stop()
+			this.createNewPup()
 	},
 	touchItem4 () {
 			this.score++
 			console.log(this.score);
 			$('#score').text("Score: " + this.score)
-			$('#basket1').append($('#item4'))
-			$('#item4').stop()
+			$('#basket1').append($('.character-container .item4'))
+			$('.character-container .item4').stop()
+			this.createNewHeart()
 			
 	},
 
@@ -225,16 +257,16 @@ const game = {
 			this.lives--
 			$('#lives').text("Lives: " + this.lives)
 			console.log("Lives left " + this.lives);
-			if (this.lives === 0) { //something is wrong with #lives
+			if (this.lives === 0) { 
 			console.log("game over");
 			console.log(this.lives);
-		$('#basket-container').empty()
-		$('#basket-container').text("Sorry, you are out of lives. But do try again! ")
+			$('#basket-container').empty()
+			$('#basket-container').text("Aw buddy you let them down... Wanna try again?")
 		}
 	},
 
 
-	roundUp () {
+	nextRound () {
 
 	},
 
@@ -254,64 +286,59 @@ const game = {
 
 	
 game.startGame();
-game.stopTimer()
+// game.stopTimer()
 // game.moveLeftUp()
 // game.scoreUp()
 // game.rollItems()
 // game.startTimer()
 // game.makeItems()
-game.loseGame()
+// game.loseGame()
+// game.createNewBird()
 
-// console.log(game.itemNumber);
+
+
+
+$('.item1').on('click', function(event) {
+	console.log(event.target);
+	if (game.birdFalling === true) {
+		game.touchItem1()
+	}
+
+})
+
+$('.item1').on('click', function(event) {
+	console.log(event.target);
+	if (game.platipussFalling === true) {
+		game.touchItem2()
+	}
+
+})
+
+$('.item1').on('click', function(event) {
+	console.log(event.target);
+	if (game.Falling === true) {
+		game.touchItem3()
+	}
+
+})
+
+$('.item1').on('click', function(event) {
+	console.log(event.target);
+	if (game.heartFalling === true) {
+		game.touchItem4()
+	}
+
+})
+
+
+
+
 
 //Event listeners
 $('#game-container').on('click', (event) => {
 	console.log(event.target);
 })
 
-
-
-// $(document).keydown(function(keypressed) {
-// 	if (keypressed.keyCode == 87) {
-// 		$("#character").css("background-color", "tomato")
-// 	}
-// });
-
-// $(document).keydown(function(keypressed) {
-// 	if (keypressed.keyCode == 65) {
-// 		$("#character").css("background-color", "lightsteelblue")
-// 	}
-// });
-
-// $(document).keydown(function(keypressed) {
-// 	if (keypressed.keyCode == 80) {
-// 		$("#character").css("background-color", "yellow")
-// 	}
-// });
-
-
-// $(document).keydown(function(keypressed) {
-// 	if (keypressed.keyCode == 76) {
-// 		$("#character").css("background-color", "green")
-// 	}
-// });
-
-
-$('#item1').click(function(){
-	game.touchItem1()
-});
-
-$('#item2').click(function(){
-	game.touchItem2()
-});
-
-$('#item3').click(function(){
-	game.touchItem3()
-});
-
-$('#item4').click(function(){
-	game.touchItem4()
-});
 
 $('#ramp1').click(function(){
 	game.loseLife()
