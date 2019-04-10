@@ -9,10 +9,10 @@ console.log("createnewbirdcreatenewbirdcreatenewbirdcreatenewbirddddd");
 //fix animation for end of round basket
 //Improve end of round logic
 //push player1 stats in the storage
+//new round - complete logic (new set of characters - stretch)
 
 
 //In progress:
-
 //second player game
 
 //To be completed:
@@ -21,14 +21,12 @@ console.log("createnewbirdcreatenewbirdcreatenewbirdcreatenewbirddddd");
 //create logic for starting the game
 //create second set of items
 //fix Time is up message (not centered)
-//new round - complete logic (new set of characters - stretch)
 
 //If time allows:
 //fix items 11 22 33 44 not working on releaseDudes()
 //add sounds
 //lose life - needs better logic
 //Timer - push stats to the scoreboard
-
 
 
 
@@ -433,7 +431,7 @@ const game2 = {
 		$('#round').text("Round: " + this.round)
 		$('#basket2').empty()
 		$('#scoreboard').empty()
-		this.createNewBird()
+		// this.createNewBird()
 	},
 
 	startTimer() {
@@ -547,13 +545,13 @@ const game2 = {
 	animateItem1 () { 
 		if (this.clock % 2 === 0) {
 			this.birdFalling = true
-			this.createNewBird();
 			$('#item1').animate ({
 			"left": "200px",
 			}, 3000, () => {			
 				this.birdFalling = false
 				$('#item1').remove()
-				
+							this.createNewBird();
+
 
 			});
 		}
@@ -670,12 +668,64 @@ const game2 = {
 		resultRound1 () {
 		// console.log("resultround is called");
 			// if (this.roundOver === true) {
-			$('#basket1').animate ({
+			$('#basket2').animate ({
 				"left": "465px",
 			}, 6000, );
 			// $('#exit').append($basket1)	
 			// }
 	},
+
+	releaseDudes () {
+			// this.releaseDudes = true;
+
+			$('#item1111').animate ({
+				"left": "300px",
+			}, 3000, () => { console.log('done');
+				
+			});
+			$('#item111').animate ({
+				"left": "300px",
+			}, 3000, () => { console.log('done');
+				
+			});
+
+			$('#item2222').animate ({
+				"left": "300px",
+			}, 3000, () => { console.log('done');
+				
+			});
+
+			$('#item222').animate ({
+				"left": "300px",
+			}, 3000, () => { console.log('done');
+				
+			});
+
+			$('#item3333').animate ({
+				"left": "300px",
+			}, 3000, () => { console.log('done');
+				
+			});
+
+			$('#item333').animate ({
+				"left": "300px",
+			}, 3000, () => { console.log('done');
+				
+			});
+
+			$('#item4444').animate ({
+				"left": "300px",
+			}, 3000, () => { console.log('done');
+				
+			});
+
+			$('#item444').animate ({
+				"left": "300px",
+			}, 3000, () => { console.log('done');
+				
+			});
+	},
+
 
 
 }
