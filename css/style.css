@@ -88,6 +88,24 @@ body {
 
 }
 
+#item111 {
+	height: 80px;
+	width: 70px;
+	background-image: url("https://i.imgur.com/oFSxH0B.jpg");
+	background-size: 100% 100%;
+	position: relative;
+	border-radius: 50%
+}
+
+#item1111 {
+	height: 80px;
+	width: 70px;
+	background-image: url("https://i.imgur.com/oFSxH0B.jpgg");
+	background-size: 100% 100%;
+	position: relative;
+	border-radius: 50%
+}
+
 #right-top-corner-container {
 	height: 100px;
 	width: 150px;
@@ -135,6 +153,24 @@ body {
 	background-image: url("https://data.whicdn.com/images/81086916/original.gif");
 	background-size: 100% 100%;
 	/*left: 40%;*/
+}
+
+#item222 {
+	height: 80px;
+	width: 70px;
+	background-image: url("https://i.imgur.com/bVXhwYX.jpg");
+	background-size: 100% 100%;
+	position: relative;
+	border-radius: 50%;
+}
+
+#item2222 {
+	height: 80px;
+	width: 70px;
+	background-image: url("https://i.imgur.com/bVXhwYX.jpg");
+	background-size: 100% 100%;
+	position: relative;
+	border-radius: 50%;
 }
 
 #ramp2 {
@@ -189,6 +225,24 @@ body {
 	position: relative;
 }
 
+#item333 {
+	height: 80px;
+	width: 70px;
+	background-image: url("https://i.imgur.com/qox3mtW.jpg");
+	background-size: 100% 100%;
+	position: relative;
+	border-radius: 50%;
+}
+
+#item3333 {
+	height: 80px;
+	width: 70px;
+	background-image: url("https://i.imgur.com/qox3mtW.jpg");
+	background-size: 100% 100%;
+	position: relative;
+	border-radius: 50%;
+}
+
 #ramp3 {
 	height: 10px;
 	width: 150px;
@@ -241,6 +295,24 @@ body {
 	background-image: url("https://colossalmedia.com/wp-content/uploads/2018/02/Heartgif.gif");
 	background-size: 100% 100%;
 	position: relative;
+}
+
+#item444 {
+	height: 80px;
+	width: 70px;
+	background-image: url("https://i.imgur.com/uOb3vvX.jpg");
+	background-size: 100% 100%;
+	position: relative;
+	border-radius: 50%;
+}
+
+#item4444 {
+	height: 80px;
+	width: 70px;
+	background-image: url("https://i.imgur.com/uOb3vvX.jpg");
+	background-size: 100% 100%;
+	position: relative;
+	border-radius: 50%;
 }
 
 #ramp4 {

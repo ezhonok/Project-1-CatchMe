@@ -8,26 +8,28 @@ console.log("createnewbirdcreatenewbirdcreatenewbirdcreatenewbirddddd");
 //Fix: only the initial item that gets clicked appends to basket
 //fix animation for end of round basket
 //Improve end of round logic
+//push player1 stats in the storage
 
 
 //In progress:
-//create logic for starting the game
 
+//second player game
 
 //To be completed:
+//compare player stats
+//create logic for win game
+//create logic for starting the game
 //create second set of items
 //fix Time is up message (not centered)
-//new round - complete logic (new set of characters)
-//push player1 stats in the storage
+//new round - complete logic (new set of characters - stretch)
 
 //If time allows:
 //fix items 11 22 33 44 not working on releaseDudes()
 //add sounds
-//second player game
-//compare player stats
-//create logic for win game
 //lose life - needs better logic
 //Timer - push stats to the scoreboard
+
+
 
 
 //GAME: Help your friends Escape to safety! Round 1 - practice; Round 2 - pets; Round 3 - knowledge
@@ -108,10 +110,10 @@ const game = {
 		if (this.clock === 15) {
 			$('#scoreboard').empty()
 			$('#scoreboard').append(`Time is up! You saved ${this.score} innocent souls!`).css('font-size', '20px', 'text-align', 'center')
-			$('#item1container').remove()
-			$('#item2container').remove()
-			$('#item3container').remove()
-			$('#item4container').remove()
+			// $('#item1container').remove()
+			// $('#item2container').remove()
+			// $('#item3container').remove()
+			// $('#item4container').remove()
 			clearInterval(this.timerId)
 			this.roundStarted = false;
 			this.resultRound1()
@@ -125,6 +127,7 @@ const game = {
 	createNewBird () {
 		const $newBird = $('<div id="item1">')
 		$('#item1container').append($newBird)
+
 		$('#item1').on('click', function(event) {
 		if (game.birdFalling === true) {
 		game.touchItem1()
@@ -366,9 +369,9 @@ const game = {
 	},
 
 	loseRound () {
-		if (this.roundOver === true){
-			$('game-container').empty()
-			$('#game-container').append("Wow... I thought they were your friends! Doesn't seem like you even tried...You'd better try again!").css('font-size', '35px');
+		if ((this.roundOver === true) && (this.score === 0)){
+			$('#game-container').empty()
+			$('#game-container').append("Wow... These are your friends we are talking about! Doesn't seem like you even tried...You'd better try again because you FAILED to save them!").css('font-size', '30px');
 		}
 	},
 
@@ -415,6 +418,7 @@ const game2 = {
 	startNextRound () {
 		$('#basket1').remove()
 		this.startRound2()
+		
 	},
 
 	startRound2 () {
@@ -422,16 +426,102 @@ const game2 = {
 		const cat = new Player()
 		this.characterEssence = cat
 
-		game.startTimer()
+		this.startTimer()
 		this.rollItems()
 		console.log(cat);
 		// this.round++
 		$('#round').text("Round: " + this.round)
 		$('#basket2').empty()
 		$('#scoreboard').empty()
+		this.createNewBird()
 	},
 
-	rollItems2 () {
+	startTimer() {
+		this.timerId = setInterval(
+
+			() => {	
+				console.log("clock " + this.clock);
+				this.clock++
+				this.rollItems()
+				this.stopTimer()
+				// $('#timer').text("Round: " + this.clock)
+			},
+
+			1000
+			)
+	},
+
+	createNewBird () {
+		const $newBird = $('<div id="item111">')
+		$('#item1container').append($newBird)
+		$('#item111').on('click', function(event) {
+		if (game.birdFalling === true) {
+		game2.touchItem1()
+
+		}
+
+		})
+	},
+
+	createBirdForBasket () {
+		const $newBasketBird = $('<div id="item1111">')
+		$('#basket2').append($newBasketBird)
+	},
+
+	createNewPlatipuss () {
+		const $newPlatipuss = $('<div id="item222">')
+		$('#item2container').append($newPlatipuss)
+		$('#item222').on('click', function(event) {
+		if (game2.platipussFalling === true) {
+		game2.touchItem2()
+			}
+
+		})
+
+	},
+
+	createPlatipussForBasket () {
+		const $newBasketPlatipuss = $('<div id="item2222">')
+		$('#basket2').append($newBasketPlatipuss)
+	},
+
+	createNewPup () {
+		const $newPup = $('<div id="item333">')
+		$('#item3container').append($newPup)
+		$('#item333').on('click', function(event) {
+		if (game2.pupFalling === true) {
+		game2.touchItem3()
+			}
+
+		})
+
+	},
+
+	createPupForBasket () {
+		const $newBasketPup = $('<div id="item3333">')
+		$('#basket2').append($newBasketPup)
+	},
+
+	createNewHeart () { 
+		const $newHeart = $('<div id="item444">')
+		$('#item4container').append($newHeart)
+		$('#item444').on('click', function(event) {
+		console.log(event.target);
+		if (game2.heartFalling === true) {
+		game2.touchItem4()
+			}
+
+		})
+	},
+
+	createHeartForBasket () {
+		const $newBasketHeart = $('<div id="item4444">')
+		$('#basket2').append($newBasketHeart)
+	},
+
+
+
+	rollItems () {
 		const randItem = Math.floor((Math.random() * 4) + 1)
 		console.log(randItem)
 		const newItem = new Item(randItem)
@@ -452,7 +542,141 @@ const game2 = {
 		if(this.itemEssence.number === 4) {
 			this.animateItem4()
 		}
-	}
+	},
+
+	animateItem1 () { 
+		if (this.clock % 2 === 0) {
+			this.birdFalling = true
+			this.createNewBird();
+			$('#item1').animate ({
+			"left": "200px",
+			}, 3000, () => {			
+				this.birdFalling = false
+				$('#item1').remove()
+				
+
+			});
+		}
+	},
+
+	animateItem2 () { 
+		if (this.clock % 2 === 0) {
+			this.platipussFalling = true
+			$('#item2').animate ({
+				"right": "200px",
+			}, 3000, () => {
+				platipussFalling = false
+				$('#item2').remove()
+				this.createNewPlatipuss()
+			});
+		}
+	},
+
+	animateItem3 () { 
+		if (this.clock % 2 === 0){
+			this.pupFalling = true
+			$('#item3').animate ({
+				"left": "200px",
+			}, 3000, () => {
+				this.pupFalling = false
+				$('#item3').remove()
+				this.createNewPup()
+			});
+		}
+	},
+
+	animateItem4 () {
+		if (this.clock % 2 === 0) {
+			this.heartFalling = true
+			$('#item4').animate ({
+				"right": "200px",
+			}, 3000, () => {
+				this.heartFalling = false
+				$('#item4').remove()
+				this.createNewHeart()
+			});
+		}
+	},
+
+	touchItem1 () { 
+			this.score++
+			$('#score').text("Score: " + this.score)
+			this.createBirdForBasket()
+			$('#item1').remove()
+
+			// this.createNewBird()
+			
+	},
+
+	touchItem2 () {
+			this.score++
+			$('#score').text("Score: " + this.score)
+			this.createPlatipussForBasket()
+			$('#item2').remove()
+			// this.createNewPlatipuss()
+	},
+
+	touchItem3 () {
+			this.score++
+			$('#score').text("Score: " + this.score)
+			this.createPupForBasket()
+			$('#item3').remove()
+			
+			// this.createNewPup()
+	},
+	touchItem4 () {
+			this.score++
+			$('#score').text("Score: " + this.score)
+			this.createHeartForBasket()
+			$('#item4').remove()
+			
+			// this.createNewHeart()
+			
+	},
+
+		stopTimer() {
+		if (this.clock === 30) {
+			$('#scoreboard').empty()
+			$('#scoreboard').append(`Time is up! You saved ${this.score} innocent souls!`).css('font-size', '20px', 'text-align', 'center')
+			$('#item1container').remove()
+			$('#item2container').remove()
+			$('#item3container').remove()
+			$('#item4container').remove()
+			clearInterval(this.timerId)
+			this.roundStarted = false;
+			this.resultRound1()
+			this.roundOver = true
+			this.loseRound()
+		}
+	},
+
+		loseRound () {
+		if ((this.roundOver === true) && (this.score === 0)){
+			$('#game-container').empty()
+			$('#game-container').append("Wow... These are your friends we are talking about! Doesn't seem like you even tried...You'd better try again because you FAILED to save them!").css('font-size', '30px');
+		}
+	},
+
+	loseLife () {
+			this.lives--
+			$('#lives').text("Lives: " + this.lives)
+			if (this.lives === 0) { 
+			$('#game-container').empty()
+			$('#game-container').append("Aw buddy you are out of lives >.<... Wanna try again?").css('font-size', '40px', 'justify-content')
+		}
+		
+	},
+
+		resultRound1 () {
+		// console.log("resultround is called");
+			// if (this.roundOver === true) {
+			$('#basket1').animate ({
+				"left": "465px",
+			}, 6000, );
+			// $('#exit').append($basket1)	
+			// }
+	},
+
 
 }
 
@@ -503,6 +727,43 @@ $('#item4').on('click', function(event) {
 
 
 
+
+$('#item111').on('click', function(event) {
+	console.log(event.target);
+	console.log("YOU TOUCHED ME");
+	if (game2.birdFalling === true) {
+		game2.touchItem1()
+	}
+
+})
+
+$('#item222').on('click', function(event) {
+	console.log(event.target);
+	if (game2.platipussFalling === true) {
+		game2.touchItem2()
+	}
+
+})
+
+$('#item333').on('click', function(event) {
+	console.log(event.target);
+	if (game2.pupFalling === true) {
+		game2.touchItem3()
+	}
+
+})
+
+$('#item444').on('click', function(event) {
+	console.log(event.target);
+	if (game2.heartFalling === true) {
+		game2.touchItem4()
+	}
+
+})
+
+
+
+
 //Event listeners
 $('#game-container').on('click', (event) => {
 	console.log(event.target);
@@ -548,4 +809,12 @@ $('#door').on('click', function(event) {
 })
 
 
+
+$('#basket2').on('click', function(event) {
+	console.log("you touched basket2");
+	// if (game.releaseDudes === true) {
+		game2.releaseDudes()
+	// }
+
+})
 
