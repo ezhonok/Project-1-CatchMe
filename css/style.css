@@ -4,6 +4,41 @@ body {
 }
 
 
+#curtain {
+	height: 600px;
+	width: 800px;
+	border: solid 3px black;
+/*	border-radius: 20%;
+*/	background-image: url("http://d3vui3t7cisnc8.cloudfront.net/img/full/20090412049E267E812AD3_0001.jpg");	/*opacity: .5;*/
+	color: black;
+	
+/*	top: -100px;
+	left: 100px;*/
+	font-family: 'Special Elite', cursive;
+	font-size: 40px;
+	background-size: 100% 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	margin: 30px;
+	position: relative;
+	flex-direction: column
+}
+
+#inside-text {
+/*	justify-content: space-around;
+/**/	
+	padding-top: 300px;
+	padding-right: 70px;
+	padding-left: 70px;
+}
+
+
+#click-here {
+	padding: 70px;
+
+}
+
 #door {
 	height: 200px;
 	width: 150px;
@@ -72,9 +107,10 @@ body {
 #item1 {
 	height: 80px;
 	width: 70px;
-	background-image: url("https://payload.cargocollective.com/1/2/71834/11021397/ATI_bird_animations_all.gif");
+	background-image: url("https://i.imgur.com/oFSxH0B.jpg");
 	background-size: 100% 100%;
 	position: relative;
+	border-radius: 50%;
 
 }
 
@@ -82,9 +118,10 @@ body {
 #item11 {
 	height: 80px;
 	width: 70px;
-	background-image: url("https://payload.cargocollective.com/1/2/71834/11021397/ATI_bird_animations_all.gif");
+	background-image: url("https://i.imgur.com/oFSxH0B.jpg");
 	background-size: 100% 100%;
 	position: relative;
+	border-radius: 50%;
 
 }
 
@@ -140,8 +177,9 @@ body {
 	width: 70px;
 	position: relative;
 	align-self: flex-end;
-	background-image: url("https://data.whicdn.com/images/81086916/original.gif");
+	background-image: url("https://i.imgur.com/bVXhwYX.jpg");
 	background-size: 100% 100%;
+	border-radius: 50%;
 	/*left: 40%;*/
 }
 
@@ -150,8 +188,9 @@ body {
 	width: 70px;
 	position: relative;
 	align-self: flex-end;
-	background-image: url("https://data.whicdn.com/images/81086916/original.gif");
+	background-image: url("https://i.imgur.com/bVXhwYX.jpg");
 	background-size: 100% 100%;
+	border-radius: 50%;
 	/*left: 40%;*/
 }
 
@@ -212,17 +251,19 @@ body {
 #item3 {
 	height: 80px;
 	width: 70px;
-	background-image: url("https://i.imgur.com/nk7l6Zi.gif");
+	background-image: url("https://i.imgur.com/qox3mtW.jpg");
 	background-size: 100% 100%;
 	position: relative;
+	border-radius: 50%;
 }
 
 #item33 {
 	height: 80px;
 	width: 70px;
-	background-image: url("https://i.imgur.com/nk7l6Zi.gif");
+	background-image: url("https://i.imgur.com/qox3mtW.jpg");
 	background-size: 100% 100%;
 	position: relative;
+	border-radius: 50%;
 }
 
 #item333 {
@@ -283,18 +324,20 @@ body {
 	height: 80px;
 	width: 70px;
 	align-self: flex-end;
-	background-image: url("https://colossalmedia.com/wp-content/uploads/2018/02/Heartgif.gif");
+	background-image: url("https://i.imgur.com/uOb3vvX.jpg");
 	background-size: 100% 100%;
 	position: relative;
+	border-radius: 50%;
 }
 
 #item44 {
 	height: 80px;
 	width: 70px;
 	align-self: flex-end;
-	background-image: url("https://colossalmedia.com/wp-content/uploads/2018/02/Heartgif.gif");
+	background-image: url("https://i.imgur.com/uOb3vvX.jpg");
 	background-size: 100% 100%;
 	position: relative;
+	border-radius: 50%;
 }
 
 #item444 {

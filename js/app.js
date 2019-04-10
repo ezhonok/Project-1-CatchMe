@@ -450,9 +450,9 @@ const game2 = {
 	},
 
 	createNewBird () {
-		const $newBird = $('<div id="item111">')
+		const $newBird = $('<div id="item1">')
 		$('#item1container').append($newBird)
-		$('#item111').on('click', function(event) {
+		$('#item1').on('click', function(event) {
 		if (game.birdFalling === true) {
 		game2.touchItem1()
 
@@ -462,14 +462,14 @@ const game2 = {
 	},
 
 	createBirdForBasket () {
-		const $newBasketBird = $('<div id="item1111">')
+		const $newBasketBird = $('<div id="item11">')
 		$('#basket2').append($newBasketBird)
 	},
 
 	createNewPlatipuss () {
-		const $newPlatipuss = $('<div id="item222">')
+		const $newPlatipuss = $('<div id="item2">')
 		$('#item2container').append($newPlatipuss)
-		$('#item222').on('click', function(event) {
+		$('#item2').on('click', function(event) {
 		if (game2.platipussFalling === true) {
 		game2.touchItem2()
 			}
@@ -479,12 +479,12 @@ const game2 = {
 	},
 
 	createPlatipussForBasket () {
-		const $newBasketPlatipuss = $('<div id="item2222">')
+		const $newBasketPlatipuss = $('<div id="item22">')
 		$('#basket2').append($newBasketPlatipuss)
 	},
 
 	createNewPup () {
-		const $newPup = $('<div id="item333">')
+		const $newPup = $('<div id="item3">')
 		$('#item3container').append($newPup)
 		$('#item333').on('click', function(event) {
 		if (game2.pupFalling === true) {
@@ -496,12 +496,12 @@ const game2 = {
 	},
 
 	createPupForBasket () {
-		const $newBasketPup = $('<div id="item3333">')
+		const $newBasketPup = $('<div id="item33">')
 		$('#basket2').append($newBasketPup)
 	},
 
 	createNewHeart () { 
-		const $newHeart = $('<div id="item444">')
+		const $newHeart = $('<div id="item4">')
 		$('#item4container').append($newHeart)
 		$('#item444').on('click', function(event) {
 		console.log(event.target);
@@ -513,7 +513,7 @@ const game2 = {
 	},
 
 	createHeartForBasket () {
-		const $newBasketHeart = $('<div id="item4444">')
+		const $newBasketHeart = $('<div id="item44">')
 		$('#basket2').append($newBasketHeart)
 	},
 
@@ -633,7 +633,7 @@ const game2 = {
 	},
 
 		stopTimer() {
-		if (this.clock === 30) {
+		if (this.clock === 15) {
 			$('#scoreboard').empty()
 			$('#scoreboard').append(`Time is up! You saved ${this.score} innocent souls!`).css('font-size', '20px', 'text-align', 'center')
 			$('#item1container').remove()
@@ -678,59 +678,66 @@ const game2 = {
 	releaseDudes () {
 			// this.releaseDudes = true;
 
-			$('#item1111').animate ({
+			$('#item11').animate ({
 				"left": "300px",
 			}, 3000, () => { console.log('done');
 				
 			});
-			$('#item111').animate ({
-				"left": "300px",
-			}, 3000, () => { console.log('done');
-				
-			});
-
-			$('#item2222').animate ({
+			$('#item1').animate ({
 				"left": "300px",
 			}, 3000, () => { console.log('done');
 				
 			});
 
-			$('#item222').animate ({
+			$('#item22').animate ({
 				"left": "300px",
 			}, 3000, () => { console.log('done');
 				
 			});
 
-			$('#item3333').animate ({
+			$('#item2').animate ({
 				"left": "300px",
 			}, 3000, () => { console.log('done');
 				
 			});
 
-			$('#item333').animate ({
+			$('#item33').animate ({
 				"left": "300px",
 			}, 3000, () => { console.log('done');
 				
 			});
 
-			$('#item4444').animate ({
+			$('#item3').animate ({
 				"left": "300px",
 			}, 3000, () => { console.log('done');
 				
 			});
 
-			$('#item444').animate ({
+			$('#item44').animate ({
+				"left": "300px",
+			}, 3000, () => { console.log('done');
+				
+			});
+
+			$('#item4').animate ({
 				"left": "300px",
 			}, 3000, () => { console.log('done');
 				
 			});
 	},
 
-
+	compareStats () {
+		if (game.score < game2.score) {
+			$('#scoreboard').append(`Player 2 wins! Well done, buddy! Take your friends home`)
+		}
+		if (game.score > game2.score) {
+			$('#scoreboard').append(`Player 1 wins! Well done, buddy! Take your friends home`)
+		}
+	}
 
 }
 
-game.startGame();
+// game.startGame();
 
 // game.stopTimer()
 // game.moveLeftUp()
@@ -778,7 +785,7 @@ $('#item4').on('click', function(event) {
 
 
 
-$('#item111').on('click', function(event) {
+$('#item1').on('click', function(event) {
 	console.log(event.target);
 	console.log("YOU TOUCHED ME");
 	if (game2.birdFalling === true) {
@@ -787,7 +794,7 @@ $('#item111').on('click', function(event) {
 
 })
 
-$('#item222').on('click', function(event) {
+$('#item2').on('click', function(event) {
 	console.log(event.target);
 	if (game2.platipussFalling === true) {
 		game2.touchItem2()
@@ -795,7 +802,7 @@ $('#item222').on('click', function(event) {
 
 })
 
-$('#item333').on('click', function(event) {
+$('#item3').on('click', function(event) {
 	console.log(event.target);
 	if (game2.pupFalling === true) {
 		game2.touchItem3()
@@ -803,7 +810,7 @@ $('#item333').on('click', function(event) {
 
 })
 
-$('#item444').on('click', function(event) {
+$('#item4').on('click', function(event) {
 	console.log(event.target);
 	if (game2.heartFalling === true) {
 		game2.touchItem4()
@@ -867,4 +874,25 @@ $('#basket2').on('click', function(event) {
 	// }
 
 })
+
+
+$('#inside-text').on('click', function(event) {
+	$('#game-container').hide()
+
+})
+
+$('#click-here').on('click', function(event) {
+	$('#game-container').show()
+	$('#curtain').remove()
+	game.startGame()
+
+})
+
+$('#scoreboard').on('click', function(event) {
+	$('#scoreboard').empty()
+	game2.compareStats()
+
+})
+
+
 
