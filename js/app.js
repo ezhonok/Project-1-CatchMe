@@ -9,25 +9,25 @@ console.log("createnewbirdcreatenewbirdcreatenewbirdcreatenewbirddddd");
 
 //In progress:
 
+
 //Improve end of round logic
 //fix animation for end of round basket
-//lose life - needs better logic
 
 
 //To be completed:
+//create logic for starting the game
+//create second set of items
 //fix Time is up message (not centered)
-
-
-///create logic for starting the game
 //new round - complete logic (new set of characters)
-//Timer - push stats to the scoreboard
-
 
 
 //If time allows:
+//add sounds
 //second player game
 //compare player stats
 //create logic for win game
+//lose life - needs better logic
+//Timer - push stats to the scoreboard
 
 
 //GAME: Help your friends Escape to safety! Round 1 - practice; Round 2 - pets; Round 3 - knowledge
@@ -71,8 +71,8 @@ const game = {
 	platipussFalling: false,
 	pupFalling: false,
 	heartFalling: false,
-	cancelAnimation: false,
-	releaseDudes: false,
+	roundOver: false,
+	
 
 
 	startGame () {
@@ -97,6 +97,7 @@ const game = {
 				this.clock++
 				this.rollItems()
 				this.stopTimer()
+				// $('#timer').text("Round: " + this.clock)
 			},
 
 			1000
@@ -106,7 +107,7 @@ const game = {
 	stopTimer() {
 		if (this.clock === 15) {
 			$('#scoreboard').empty()
-			$('#scoreboard').append(`Time is up! You saved ${this.score} innocent souls!`).css('font-size', '25px')
+			$('#scoreboard').append(`Time is up! You saved ${this.score} innocent souls!`).css('font-size', '20px', 'text-align', 'center')
 			$('#item1container').remove()
 			$('#item2container').remove()
 			$('#item3container').remove()
@@ -114,6 +115,7 @@ const game = {
 			clearInterval(this.timerId)
 			this.roundStarted = false;
 			this.resultRound1()
+			this.roundOver = true
 		}
 	},
 
@@ -303,51 +305,74 @@ const game = {
 	},
 
 	resultRound1 () {
-			if (this.clock === 16) {
+		// console.log("resultround is called");
+			// if (this.roundOver === true) {
 			$('#basket1').animate ({
-				"left": "700px",
-			}, 7000, () => { console.log('done');
-				
-			});
+				"left": "465px",
+			}, 6000, );
 			// $('#exit').append($basket1)	
-			}
-		},
+			// }
+	},
 
 	releaseDudes () {
 			// this.releaseDudes = true;
 			$('#item11').animate ({
-				"left": "100px",
-			}, 7000, () => { console.log('done');
+				"left": "300px",
+			}, 3000, () => { console.log('done');
 				
 			});
-			
-	
-			// $('#basket1').animate ({
-			// 	"down": "500px",
-			// }, 10000, () => {
+			$('#item1').animate ({
+				"left": "300px",
+			}, 3000, () => { console.log('done');
 				
-			
+			});
+
+			$('#item22').animate ({
+				"left": "300px",
+			}, 3000, () => { console.log('done');
 				
-			// });
-		// }
+			});
 
+			$('#item2').animate ({
+				"left": "300px",
+			}, 3000, () => { console.log('done');
+				
+			});
 
-// 		if (this.clock === 10) {
-// 			$('#exit').animate ({
-// 				"down": "500px",
-// 			}, 3000  $('#exit').append($basket1)
-// );
-// 		}
-		
+			$('#item33').animate ({
+				"left": "300px",
+			}, 3000, () => { console.log('done');
+				
+			});
+
+			$('#item3').animate ({
+				"left": "300px",
+			}, 3000, () => { console.log('done');
+				
+			});
+
+			$('#item44').animate ({
+				"left": "300px",
+			}, 3000, () => { console.log('done');
+				
+			});
+
+			$('#item4').animate ({
+				"left": "300px",
+			}, 3000, () => { console.log('done');
+				
+			});
 	},
+
 
 	loseLife () {
 			this.lives--
 			$('#lives').text("Lives: " + this.lives)
 			if (this.lives === 0) { 
-			$('#basket-container').empty()
-			$('#basket-container').text("Aw buddy you are out of lives >.<... Wanna try again?")
+			$('#game-container').empty()
+			$('#game-container').append("Aw buddy you are out of lives >.<... Wanna try again?").css('font-size', '40px', 'justify-content')
 		}
+		
 	},
 
 
@@ -436,7 +461,7 @@ $('#ramp3').click(function(){
 });
 
 $('#ramp4').click(function(){
-	game.loseLife()
+	game.showLoseLife()
 });
 
 

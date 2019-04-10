@@ -1,5 +1,6 @@
 body {
-	background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ce97f1a0-afed-4df6-a09c-cd1c8b98da41/d2qqqxl-49b9bd24-fb84-4673-9b6e-685977a2d9fb.jpg/v1/fill/w_1600,h_1067,q_75,strp/into_the_forest_by_dreamca7cher_d2qqqxl-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA2NyIsInBhdGgiOiJcL2ZcL2NlOTdmMWEwLWFmZWQtNGRmNi1hMDljLWNkMWM4Yjk4ZGE0MVwvZDJxcXF4bC00OWI5YmQyNC1mYjg0LTQ2NzMtOWI2ZS02ODU5NzdhMmQ5ZmIuanBnIiwid2lkdGgiOiI8PTE2MDAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.svCALlA1EYe67PmmjMmTsTP5LqeXkjzjS60ilY7iNtA');
+	background-image: url('https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/0kjHIH6/dark-and-spooky-dungeon-with-torches-hanging-on-a-brick-wall_4bqefvc9l__F0000.png');
+	background-size: 100%;
 }
 
 
@@ -7,10 +8,10 @@ body {
 	height: 200px;
 	width: 150px;
 	/*border: solid 3px black;*/
-	/*background-color: gray;*/
+	/*background-color: rgb(255,255,51, .7);*/
 	background-image: url('http://pngimg.com/uploads/door/door_PNG17558.png');
 	background-size: 100% 100%;
-	left: 800px;
+	left: 850px;
 	top: 150px;
 	position: relative;
 }
@@ -20,10 +21,14 @@ body {
 	width: 600px;
 	border: solid 3px black;
 	border-radius: 20%;
-	background-color: gray;
+	background-color: rgba(51,170,51, .5);
+	/*opacity: .5;*/
 	color: ivory;
 	position: relative;
 	top: -100px;
+	left: 100px;
+	font-family: 'Special Elite', cursive;
+	font-size: 40px;
 }
 
 #left-top-corner-container {
@@ -49,7 +54,8 @@ body {
 #ramp1 {
 	height: 10px;
 	width: 150px;
-	background-color: black;
+	background-image: url('https://i.gifer.com/GpaE.gif');
+
 
 
 }
@@ -134,7 +140,7 @@ body {
 #ramp2 {
 	height: 10px;
 	width: 150px;
-	background-color: black;
+	background-image: url('https://i.gifer.com/GpaE.gif');
 }
 
 #left-bottom-corner-container {
@@ -186,7 +192,7 @@ body {
 #ramp3 {
 	height: 10px;
 	width: 150px;
-	background-color: black;
+	background-image: url('https://i.gifer.com/GpaE.gif');
 }
 
 #right-bottom-corner-container {
@@ -240,7 +246,7 @@ body {
 #ramp4 {
 	height: 10px;
 	width: 150px;
-	background-color: black;
+	background-image: url('https://i.gifer.com/GpaE.gif');
 }
 
 
@@ -248,8 +254,8 @@ body {
 #basket-container {
 	height: 350px;
 	width: 250px;
-	background-color: black;
-	border: solid 3px black;
+	/*background-color: rgba(0,0,0,.5);*/
+	/*border: solid 3px black;*/
 	position: relative;
 	top: 25%;
 	left: 29%;
@@ -265,13 +271,14 @@ body {
 #basket1 {
 	height: 80px;
 	width: 250px;
-	background-color: pink;
+	/*background-color: pink;*/
 	border: solid 1px black;
-	position: relative;
-	background-size: contain;
+	background-image: url('https://thumbs.dreamstime.com/t/box-dark-edges-inside-blue-50865067.jpg');
+	background-size: 100% 100%;
 	color: black;
 	display: flex;
 	flex-direction: row;
+	justify-content: center;
 	overflow: hidden;
 	position: relative;
 
@@ -280,25 +287,26 @@ body {
 #basket2 {
 	height: 80px;
 	width: 250px;
-	background-color: yellow;
+	background-image: url('https://thumbs.dreamstime.com/t/box-dark-edges-inside-blue-50865067.jpg');
+	background-size: 100% 100%;
+	/*background-color: yellow;*/
 	border: solid 1px black;
-	position: relative;
-	background-size: contain;
 	color: black;
 	display: flex;
 	flex-direction: row;
 	overflow: hidden;
 	position: relative;	
+	justify-content: center;
 
 }
 
 #basket3 {
 	height: 80px;
 	width: 250px;
-	background-color: tomato;
+	background-image: url('https://thumbs.dreamstime.com/t/box-dark-edges-inside-blue-50865067.jpg');
+	background-size: 100% 100%;
+	/*background-color: tomato;*/
 	border: solid 1px black;
-	position: relative;
-	background-size: contain;
 	color: black;
 	display: flex;
 	flex-direction: row;
@@ -313,6 +321,7 @@ body {
 	height: 100px;
 	width: 200px;
 	background-color: olive;
+	opacity: .9;
 	border: solid 3px black;
 	position: relative;
 	top: -129%;
@@ -323,6 +332,7 @@ body {
 	font-family: 'Special Elite', cursive;
 	display: flex;
 	flex-direction: column;
+
 
 
 }
