@@ -6,22 +6,22 @@ console.log("createnewbirdcreatenewbirdcreatenewbirdcreatenewbirddddd");
 //fix animation in basket issue
 //remove round text from baskets upon start of the game
 //Fix: only the initial item that gets clicked appends to basket
+//fix animation for end of round basket
+//Improve end of round logic
+
 
 //In progress:
-
-
-//Improve end of round logic
-//fix animation for end of round basket
+//create logic for starting the game
 
 
 //To be completed:
-//create logic for starting the game
 //create second set of items
 //fix Time is up message (not centered)
 //new round - complete logic (new set of characters)
-
+//push player1 stats in the storage
 
 //If time allows:
+//fix items 11 22 33 44 not working on releaseDudes()
 //add sounds
 //second player game
 //compare player stats
@@ -56,8 +56,8 @@ class Item {
 
 
 const game = {
-	playerOneStats: null, //will be used when player 1 is done
-	playerTwoStats: null, //will be used when player 2 is done
+	// playerOneStats: null, //will be used when player 1 is done
+	// playerTwoStats: null, //will be used when player 2 is done
 
 	clock: null,
 	lives: 3,
@@ -90,7 +90,7 @@ const game = {
 
 
 	startTimer() {
-		setInterval(
+		this.timerId = setInterval(
 
 			() => {	
 				console.log("clock " + this.clock);
@@ -116,12 +116,11 @@ const game = {
 			this.roundStarted = false;
 			this.resultRound1()
 			this.roundOver = true
+			this.loseRound()
 		}
 	},
 
 
-//what is broken when new item gets created?
-//I need it to use the touch function 
 
 	createNewBird () {
 		const $newBird = $('<div id="item1">')
@@ -132,6 +131,7 @@ const game = {
 			}
 
 		})
+
 	},
 
 	createBirdForBasket () {
@@ -316,6 +316,7 @@ const game = {
 
 	releaseDudes () {
 			// this.releaseDudes = true;
+
 			$('#item11').animate ({
 				"left": "300px",
 			}, 3000, () => { console.log('done');
@@ -364,6 +365,12 @@ const game = {
 			});
 	},
 
+	loseRound () {
+		if (this.roundOver === true){
+			$('game-container').empty()
+			$('#game-container').append("Wow... I thought they were your friends! Doesn't seem like you even tried...You'd better try again!").css('font-size', '35px');
+		}
+	},
 
 	loseLife () {
 			this.lives--
@@ -376,10 +383,6 @@ const game = {
 	},
 
 
-	nextRound () {
-
-	},
-
 	loseGame () {
 		if (this.lives === 0) { 
 		$('#game-container').remove()
@@ -388,12 +391,73 @@ const game = {
 
 	winGame () {
 
+	},
+
+
+}
+	
+
+const game2 = {
+	clock: null,
+	lives: 3,
+	round: 2,
+	score: 0,
+	characterEssence: null,
+	itemEssence: null,
+	timerId: null,
+	roundStarted: false,
+	birdFalling: false,
+	platipussFalling: false,
+	pupFalling: false,
+	heartFalling: false,
+
+
+	startNextRound () {
+		$('#basket1').remove()
+		this.startRound2()
+	},
+
+	startRound2 () {
+		// window.location.reload(false)
+		const cat = new Player()
+		this.characterEssence = cat
+
+		game.startTimer()
+		this.rollItems()
+		console.log(cat);
+		// this.round++
+		$('#round').text("Round: " + this.round)
+		$('#basket2').empty()
+		$('#scoreboard').empty()
+	},
+
+	rollItems2 () {
+		const randItem = Math.floor((Math.random() * 4) + 1)
+		console.log(randItem)
+		const newItem = new Item(randItem)
+		this.itemEssence = newItem
+
+		if(this.itemEssence.number === 1) {
+			this.animateItem1()
+		}
+
+		if(this.itemEssence.number === 2) {
+			this.animateItem2()
+			}
+
+		if(this.itemEssence.number === 3) {
+			this.animateItem3()
+		}
+
+		if(this.itemEssence.number === 4) {
+			this.animateItem4()
+		}
 	}
+
 }
 
-
-	
 game.startGame();
+
 // game.stopTimer()
 // game.moveLeftUp()
 // game.loseGame()
@@ -474,6 +538,14 @@ $('#basket1').on('click', function(event) {
 
 })
 
+
+$('#door').on('click', function(event) {
+	console.log("closing the door");
+	// if (game.releaseDudes === true) {
+		game2.startNextRound()
+	// }
+
+})
 
 
 
