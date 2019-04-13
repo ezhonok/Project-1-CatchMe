@@ -3,7 +3,7 @@ body {
 	background-size: 100%;
 }
 
-/*
+
 #curtain {
 	height: 600px;
 	width: 800px;
@@ -19,8 +19,8 @@ body {
 	margin: 30px;
 	position: relative;
 	flex-direction: column
-}
-*/
+}*
+
 #inside-text {	
 	padding-top: 300px;
 	padding-right: 70px;

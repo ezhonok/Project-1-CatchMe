@@ -673,7 +673,7 @@ const game2 = {
 	},
 
 		stopTimer() {
-		if (this.clock === 15) {
+		if (this.clock === 17) {
 			$('#scoreboard').empty()
 			$('#scoreboard').append(`Time is up! You saved ${this.score} innocent souls!`).css('font-size', '20px', 'text-align', 'center')
 			$('#item1container').remove()
@@ -716,6 +716,8 @@ const game2 = {
 	},
 
 	releaseDudes () {
+		$('#basket3').text(`CLICK HERE TO SEE WHO WON`).css('color', 'white')
+
 			$('#item11').animate ({
 				"left": "300px",
 			}, 3000, () => { console.log('done');
@@ -740,7 +742,7 @@ const game2 = {
 			});
 
 			$('#item33').animate ({
-				"right": "300px",
+				"left": "300px",
 			}, 3000, () => { console.log('done');
 				
 			});
@@ -765,11 +767,12 @@ const game2 = {
 	},
 
 	compareStats () {
+
 		if (game.score < game2.score) {
-			$('#scoreboard').append(`Player 2 wins! Well done, buddy! Take your friends home`)
+			$('#basket-container').append(`Player 2 wins! Well done, buddy! Take your friends home`)
 		}
 		if (game.score > game2.score) {
-			$('#scoreboard').append(`Player 1 wins! Well done, buddy! Take your friends home`)
+			$('#basket-container').append(`Player 1 wins! Well done, buddy! Take your friends home`)
 		}
 	}
 
@@ -984,7 +987,7 @@ $('#click-here').on('click', function(event) {
 
 })
 
-$('#scoreboard').on('click', function(event) {
+$('#basket3').on('click', function(event) {
 	$('#scoreboard').empty()
 	game2.compareStats()
 
