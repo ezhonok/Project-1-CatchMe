@@ -14,16 +14,17 @@ console.log("createnewbirdcreatenewbirdcreatenewbirdcreatenewbirddddd");
 //create logic for win game
 //create logic for starting the game
 //create second set of items
+//second player game
 
 
 //In progress:
-//second player game
+//clean up code
+//add comments to code for easier read
 //fix touch function not working for second player
 
 
 //To be completed:
-//clean up code
-//add comments to code for easier read
+
 //fix readme and user story
 //better logic for win game (rn - winner announced on click scoreboard/ player doesnt know to do so)
 //fix overlap of divs during basket animation
@@ -36,12 +37,12 @@ console.log("createnewbirdcreatenewbirdcreatenewbirdcreatenewbirddddd");
 
 
 //If time allows:
-//have the door appear when player is done
+//have the door appear when player is done instead of right away
 //third round
 //add sounds
 //lose life - needs better logic
 //fix Time is up message (not centered)
-//fix all dynamic messages for that matter - none are centered
+//fix all dynamic messages for that matter - none are centered, cant figure out why css()isnt working for this
 
 
 
@@ -120,10 +121,10 @@ const game = {
 		if (this.clock === 15) {
 			$('#scoreboard').empty()
 			$('#scoreboard').append(`Time is up! You saved ${this.score} innocent souls!`).css('font-size', '20px', 'text-align', 'center')
-			$('#item1container').remove()
-			$('#item2container').remove()
-			$('#item3container').remove()
-			$('#item4container').remove()
+			// $('#item1container').remove()
+			// $('#item2container').remove()
+			// $('#item3container').remove()
+			// $('#item4container').remove()
 			clearInterval(this.timerId)
 			this.roundStarted = false;
 			this.resultRound1()
@@ -133,7 +134,8 @@ const game = {
 	},
 
 
-
+//createNew<..> code below is used to create new items
+//that roll down the ramp
 	createNewBird () {
 		const $newBird = $('<div id="item1">')
 		$('#item1container').append($newBird)
@@ -146,7 +148,12 @@ const game = {
 		})
 
 	},
-
+//create<...>ForBasket code is used to create
+//an illusion that the items that user clicks 
+//go directly in the basket(by basket I mean one of the three divs in the middle
+//of the game container). This was created because I couldnt find
+//another way to stop the animation when items were inside the basket
+//this way the items that are appended are always static until released
 	createBirdForBasket () {
 		const $newBasketBird = $('<div id="item11">')
 		$('#basket1').append($newBasketBird)
@@ -203,6 +210,8 @@ const game = {
 		$('#basket1').append($newBasketHeart)
 	},
 
+//rollItems function is used to randomly
+//assign animation 
 	rollItems () {
 
 		const randItem = Math.floor((Math.random() * 4) + 1)
@@ -227,6 +236,8 @@ const game = {
 
 	},
 
+
+//animateItem is used to actually animate corresponding items
 	animateItem1 () { 
 		if (this.clock % 2 === 0) {
 			this.birdFalling = true
@@ -280,6 +291,9 @@ const game = {
 		}
 	},
 
+//touchItem<..> is used to increase score
+//and append corresponding items to teh basket (div in the middle of
+//the game container)
 	touchItem1 () { 
 			this.score++
 			$('#score').text("Score: " + this.score)
@@ -316,16 +330,19 @@ const game = {
 			
 	},
 
+//resultRound is used to move the basket with
+//"caught" items towards the door
 	resultRound1 () {
 		// console.log("resultround is called");
 			// if (this.roundOver === true) {
 			$('#basket1').animate ({
 				"left": "465px",
 			}, 6000, );
-			// $('#exit').append($basket1)	
-			// }
+		
 	},
 
+//releaseDudes..well is used to release the dudes duh
+//off they go back to their cosy couches and fresh food
 	releaseDudes () {
 			// this.releaseDudes = true;
 
@@ -377,13 +394,22 @@ const game = {
 			});
 	},
 
+//loseRound is a function that announces that player lost
+//if time is up and player hasn't rescued any of his friends
+//I am also crearting dynamic basket-container div heer to center
+// the text as it couldn't be centered with just .css() method
+//for some reason 
 	loseRound () {
 		if ((this.roundOver === true) && (this.score === 0)){
 			$('#game-container').empty()
-			$('#game-container').append("Wow... These are your friends we are talking about! Doesn't seem like you even tried...You'd better try again because you FAILED to save them!").css('font-size', '30px');
+			const $newBasketContainer = $('<div id="basket-container">')
+			$('#game-container').append($newBasketContainer)
+			$('#basket-container').append("Wow... These are your friends we are talking about! Doesn't seem like you even tried...You'd better try again and rescue them this time!").css('font-size', '30px');
 		}
 	},
 
+//loseLife function decreases lives if player clicks on a ramp
+//instead of the item(character)
 	loseLife () {
 			this.lives--
 			$('#lives').text("Lives: " + this.lives)
@@ -394,7 +420,7 @@ const game = {
 		
 	},
 
-
+//loseGame is used when user 
 	loseGame () {
 		if (this.lives === 0) { 
 		$('#game-container').remove()
@@ -408,7 +434,9 @@ const game = {
 
 }
 	
-
+//Below code is pretty much the same as above
+//with a few tweaks in the items names to ensure
+//animation and jquery work properly
 const game2 = {
 	clock: null,
 	lives: 3,
@@ -431,17 +459,19 @@ const game2 = {
 	},
 
 	startRound2 () {
-		// window.location.reload(false)
 		const cat = new Player()
 		this.characterEssence = cat
 
 		this.startTimer()
 		this.rollItems()
 		console.log(cat);
-		// this.round++
+		this.round++
 		$('#round').text("Round: " + this.round)
 		$('#basket2').empty()
 		$('#scoreboard').empty()
+		$('#score').text("Score: " + this.score)
+		$('#lives').text("Score: " + this.score)
+		$('#round').text("Score: " + this.score)
 		// this.createNewBird()
 	},
 
@@ -497,7 +527,7 @@ const game2 = {
 	createNewPup () {
 		const $newPup = $('<div id="item3">')
 		$('#item3container').append($newPup)
-		$('#item333').on('click', function(event) {
+		$('#item3').on('click', function(event) {
 		if (game2.pupFalling === true) {
 		game2.touchItem3()
 			}
@@ -514,7 +544,7 @@ const game2 = {
 	createNewHeart () { 
 		const $newHeart = $('<div id="item4">')
 		$('#item4container').append($newHeart)
-		$('#item444').on('click', function(event) {
+		$('#item4').on('click', function(event) {
 		console.log(event.target);
 		if (game2.heartFalling === true) {
 		game2.touchItem4()
@@ -560,7 +590,7 @@ const game2 = {
 			}, 3000, () => {			
 				this.birdFalling = false
 				$('#item1').remove()
-							this.createNewBird();
+				this.createNewBird();
 
 
 			});
@@ -609,8 +639,8 @@ const game2 = {
 	touchItem1 () { 
 			this.score++
 			$('#score').text("Score: " + this.score)
-			this.createBirdForBasket()
 			$('#item1').remove()
+			this.createBirdForBasket()
 
 			// this.createNewBird()
 			
@@ -619,24 +649,24 @@ const game2 = {
 	touchItem2 () {
 			this.score++
 			$('#score').text("Score: " + this.score)
-			this.createPlatipussForBasket()
 			$('#item2').remove()
+			this.createPlatipussForBasket()
 			// this.createNewPlatipuss()
 	},
 
 	touchItem3 () {
 			this.score++
 			$('#score').text("Score: " + this.score)
-			this.createPupForBasket()
 			$('#item3').remove()
+			this.createPupForBasket()
 			
 			// this.createNewPup()
 	},
 	touchItem4 () {
 			this.score++
 			$('#score').text("Score: " + this.score)
-			this.createHeartForBasket()
 			$('#item4').remove()
+			this.createHeartForBasket()
 			
 			// this.createNewHeart()
 			
@@ -661,7 +691,10 @@ const game2 = {
 		loseRound () {
 		if ((this.roundOver === true) && (this.score === 0)){
 			$('#game-container').empty()
-			$('#game-container').append("Wow... These are your friends we are talking about! Doesn't seem like you even tried...You'd better try again because you FAILED to save them!").css('font-size', '30px');
+			const $newBasketContainer = $('<div id="basket-container">')
+			$('#game-container').append($newBasketContainer)
+			$('#basket-container')
+			$('#basket-container').append("Wow... These are your friends we are talking about! Doesn't seem like you even tried...You'd better try again and rescue them this time!").css('font-size', '30px');
 		}
 	},
 
@@ -676,18 +709,13 @@ const game2 = {
 	},
 
 		resultRound1 () {
-		// console.log("resultround is called");
-			// if (this.roundOver === true) {
 			$('#basket2').animate ({
 				"left": "465px",
 			}, 6000, );
-			// $('#exit').append($basket1)	
-			// }
+			
 	},
 
 	releaseDudes () {
-			// this.releaseDudes = true;
-
 			$('#item11').animate ({
 				"left": "300px",
 			}, 3000, () => { console.log('done');
@@ -712,7 +740,7 @@ const game2 = {
 			});
 
 			$('#item33').animate ({
-				"left": "300px",
+				"right": "300px",
 			}, 3000, () => { console.log('done');
 				
 			});
@@ -750,6 +778,8 @@ const game2 = {
 
 
 
+//Listeners
+
 $('#item1').on('click', function(event) {
 	console.log(event.target);
 	console.log("YOU TOUCHED ME");
@@ -785,12 +815,45 @@ $('#item4').on('click', function(event) {
 
 
 
+$('#item11').on('click', function(event) {
+	console.log(event.target);
+	console.log("YOU TOUCHED ME");
+	if (game.birdFalling === true) {
+		game.touchItem1()
+	}
+
+})
+
+$('#item22').on('click', function(event) {
+	console.log(event.target);
+	if (game.platipussFalling === true) {
+		game.touchItem2()
+	}
+
+})
+
+$('#item33').on('click', function(event) {
+	console.log(event.target);
+	if (game.pupFalling === true) {
+		game.touchItem3()
+	}
+
+})
+
+$('#item44').on('click', function(event) {
+	console.log(event.target);
+	if (game.heartFalling === true) {
+		game.touchItem4()
+	}
+
+})
+
+
 
 
 
 $('#item1').on('click', function(event) {
 	console.log(event.target);
-	console.log("YOU TOUCHED ME");
 	if (game2.birdFalling === true) {
 		game2.touchItem1()
 	}
@@ -822,6 +885,37 @@ $('#item4').on('click', function(event) {
 })
 
 
+$('#item11').on('click', function(event) {
+	console.log(event.target);
+	if (game2.birdFalling === true) {
+		game2.touchItem1()
+	}
+
+})
+
+$('#item22').on('click', function(event) {
+	console.log(event.target);
+	if (game2.platipussFalling === true) {
+		game2.touchItem2()
+	}
+
+})
+
+$('#item33').on('click', function(event) {
+	console.log(event.target);
+	if (game2.pupFalling === true) {
+		game2.touchItem3()
+	}
+
+})
+
+$('#item44').on('click', function(event) {
+	console.log(event.target);
+	if (game2.heartFalling === true) {
+		game2.touchItem4()
+	}
+
+})
 
 
 //Event listeners
@@ -853,7 +947,6 @@ $('#ramp4').click(function(){
 
 $('#basket1').on('click', function(event) {
 	console.log("you touched basket1");
-	// if (game.releaseDudes === true) {
 		game.releaseDudes()
 	// }
 

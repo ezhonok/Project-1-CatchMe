@@ -3,7 +3,7 @@ body {
 	background-size: 100%;
 }
 
-
+/*
 #curtain {
 	height: 600px;
 	width: 800px;
@@ -20,7 +20,7 @@ body {
 	position: relative;
 	flex-direction: column
 }
-
+*/
 #inside-text {	
 	padding-top: 300px;
 	padding-right: 70px;
@@ -49,7 +49,7 @@ body {
 	height: 600px;
 	width: 600px;
 	border: solid 3px black;
-	border-radius: 20%;
+	border-radius: 10%;
 	background-color: rgba(51,170,51, .5);
 	color: ivory;
 	position: relative;
@@ -98,6 +98,7 @@ body {
 	background-size: 100% 100%;
 	position: relative;
 	border-radius: 50%;
+	border: solid 2px black;
 
 }
 
@@ -109,6 +110,7 @@ body {
 	background-size: 100% 100%;
 	position: relative;
 	border-radius: 50%;
+	border: solid 2px black;
 
 }
 
@@ -118,16 +120,9 @@ body {
 	background-image: url("https://i.imgur.com/oFSxH0B.jpg");
 	background-size: 100% 100%;
 	position: relative;
-	border-radius: 50%
-}
+	border-radius: 50%;
+	border: solid 2px black;
 
-#item1111 {
-	height: 80px;
-	width: 70px;
-	background-image: url("https://i.imgur.com/oFSxH0B.jpgg");
-	background-size: 100% 100%;
-	position: relative;
-	border-radius: 50%
 }
 
 #right-top-corner-container {
@@ -166,6 +161,7 @@ body {
 	background-image: url("https://i.imgur.com/bVXhwYX.jpg");
 	background-size: 100% 100%;
 	border-radius: 50%;
+	border: solid 2px black;
 }
 
 #item22 {
@@ -176,8 +172,19 @@ body {
 	background-image: url("https://i.imgur.com/bVXhwYX.jpg");
 	background-size: 100% 100%;
 	border-radius: 50%;
+	border: solid 2px black;
 }
 
+#item222 {
+	height: 80px;
+	width: 70px;
+	position: relative;
+	align-self: flex-end;
+	background-image: url("https://i.imgur.com/bVXhwYX.jpg");
+	background-size: 100% 100%;
+	border-radius: 50%;
+	border: solid 2px black;
+}
 
 #ramp2 {
 	height: 10px;
@@ -219,6 +226,7 @@ body {
 	background-size: 100% 100%;
 	position: relative;
 	border-radius: 50%;
+	border: solid 2px black;
 }
 
 #item33 {
@@ -228,8 +236,18 @@ body {
 	background-size: 100% 100%;
 	position: relative;
 	border-radius: 50%;
+	border: solid 2px black;
 }
 
+#item333 {
+	height: 80px;
+	width: 70px;
+	background-image: url("https://i.imgur.com/qox3mtW.jpg");
+	background-size: 100% 100%;
+	position: relative;
+	border-radius: 50%;
+	border: solid 2px black;
+}
 
 #ramp3 {
 	height: 10px;
@@ -266,6 +284,7 @@ body {
 	background-size: 100% 100%;
 	position: relative;
 	border-radius: 50%;
+	border: solid 2px black;
 }
 
 #item44 {
@@ -276,6 +295,18 @@ body {
 	background-size: 100% 100%;
 	position: relative;
 	border-radius: 50%;
+	border: solid 2px black;
+}
+
+#item444 {
+	height: 80px;
+	width: 70px;
+	align-self: flex-end;
+	background-image: url("https://i.imgur.com/uOb3vvX.jpg");
+	background-size: 100% 100%;
+	position: relative;
+	border-radius: 50%;
+	border: solid 2px black;
 }
 
 #ramp4 {
