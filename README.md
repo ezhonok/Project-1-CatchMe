@@ -1,42 +1,42 @@
 Catch Me!
 
-Based on a Russian prototype handheld game "Nu, Pogodi!"
+Inspired by a Russian handheld game "Nu, Pogodi!"
+
+GAME: Help your friends Escape to safety!
+You got a telegram from your and your friends' pets saying tehy have been kidnapped and locked up in a dungeon.. Not to worry! They are planning a mass escape. Are you prepared to help them get to safety? 
 
 User Story:
 
 Game objective:
-User is supposed to catch items rolling down the ramps by moving basket toward the ramp with the item.
+User is supposed to catch items rolling down the ramps by clicking on the moving items
 
 
-*Screen Layout:
-1. One character who can move four ways:
-	-Left hands-down
-	-Left hands-up
-	-Right hands-down
-	-Right hands-up
+Screen Layout:
 
-2. Four ramps (static, no functionality)
+1. Four ramps (static, no functionality)
 	-Left down corner
 	-Left up corner
 	-Right down corner
 	-Right up corner
 
-3. Items falling down the ramps
+2. Items falling down the ramps
 	-Left down corner
 	-Left up corner
 	-Right down corner
 	-Right up corner
 
-4. Stats board
+3. Stats board
 	-Lives remaining (0 to 5)
-	-Current round (1 through 3)
+	-Current round
 	-Current score
 
+4. Door where basket with pets will be moved towards at the end of each round
+
+5. Three boxes (baskets) in the middle of the screen
 
 Logistics:
 1. Score:
 	-Increases by 1 when each item is caught
-	-Clears after each round
 
 2. Rounds:
 	-Round 1: 10 items to catch to move to the next round
@@ -44,15 +44,13 @@ Logistics:
 	-Round 3: 30 items to catch
 
 3. Win/Lose
-	-User wins if all three rounds are won
-	-User loses if lives stats equal zero
-	-User loses 1 life each time they miss an item
+	-Whoever has bigger score wins
+	-Game is over if lives stats equal zero
+	-User loses 1 life each time they click the ramp instead of the item
 
-Controls:
-	w - move basket up left
-	a - move basket down left
-	p - move basket up right
-	l - move basket down right
+4. User has 15 seconds to click as many items as they can
+
+
 
 
 

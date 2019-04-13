@@ -4,7 +4,7 @@ console.log("createnewbirdcreatenewbirdcreatenewbirdcreatenewbirddddd");
 //game over logic
 //Refactoring code
 //fix animation in basket issue
-//remove round text from baskets upon start of the game
+//remove "player1/2" text from baskets upon start of the game
 //Fix: only the initial item that gets clicked appends to basket
 //fix animation for end of round basket
 //Improve end of round logic
@@ -26,12 +26,11 @@ console.log("createnewbirdcreatenewbirdcreatenewbirdcreatenewbirddddd");
 //In progress:
 //fix readme and user stories
 
-//To be completed:
 
+//To be completed:
 //Timer - push stats to the scoreboard
 //push player 2 stats to the scoreboard
 //div next to the door letting user know to click on animals to release them
-
 
 
 //Upcoming features/bug fixes:
@@ -40,6 +39,7 @@ console.log("createnewbirdcreatenewbirdcreatenewbirdcreatenewbirddddd");
 //have the door appear when time is up instead of right away
 //add sounds
 //lose life - logic for when items fall
+//better second player experience - timing of item creation is off
 //fix Time is up message (not centered)
 //fix all dynamic messages for that matter - none are centered, cant figure out why css()isnt working for this
 
@@ -117,10 +117,6 @@ const game = {
 		if (this.clock === 15) {
 			$('#scoreboard').empty()
 			$('#scoreboard').append(`Time is up! You saved ${this.score} innocent souls!`).css('font-size', '20px', 'text-align', 'center')
-			// $('#item1container').remove()
-			// $('#item2container').remove()
-			// $('#item3container').remove()
-			// $('#item4container').remove()
 			clearInterval(this.timerId)
 			this.roundStarted = false;
 			this.resultRound1()
@@ -137,8 +133,8 @@ const game = {
 		$('#item1container').append($newBird)
 
 		$('#item1').on('click', function(event) {
-		if (game.birdFalling === true) {
-		game.touchItem1()
+			if (game.birdFalling === true) {
+				game.touchItem1()
 			}
 		})
 	},
@@ -147,8 +143,8 @@ const game = {
 		const $newPlatipuss = $('<div id="item2">')
 		$('#item2container').append($newPlatipuss)
 		$('#item2').on('click', function(event) {
-		if (game.platipussFalling === true) {
-		game.touchItem2()
+			if (game.platipussFalling === true) {
+				game.touchItem2()
 			}
 		})
 	},
@@ -157,8 +153,8 @@ const game = {
 		const $newPup = $('<div id="item3">')
 		$('#item3container').append($newPup)
 		$('#item3').on('click', function(event) {
-		if (game.pupFalling === true) {
-		game.touchItem3()
+			if (game.pupFalling === true) {
+				game.touchItem3()
 			}
 		})
 	},
@@ -168,8 +164,8 @@ const game = {
 		$('#item4container').append($newHeart)
 		$('#item4').on('click', function(event) {
 		console.log(event.target);
-		if (game.heartFalling === true) {
-		game.touchItem4()
+			if (game.heartFalling === true) {
+				game.touchItem4()
 			}
 		})
 	},
@@ -284,7 +280,7 @@ const game = {
 	},
 
 //touchItem<..> is used to increase score
-//and append corresponding items to teh basket (div in the middle of
+//and append corresponding items to the basket (div in the middle of
 //the game container)
 	touchItem1 () { 
 			this.score++
@@ -322,6 +318,9 @@ const game = {
 			$('#basket1').animate ({
 				"left": "465px",
 			}, 6000, );
+			const $doorSign = $('<div id="doorSign">Click the door to start round 2</div>')
+			$('#door').append($doorSign)
+
 		
 	},
 
@@ -337,7 +336,7 @@ const game = {
 
 //loseRound is a function that announces that player lost
 //if time is up and player hasn't rescued any of his friends
-//I am also crearting dynamic basket-container div heer to center
+//I am also crearting dynamic basket-container div here to center
 // the text as it couldn't be centered with just .css() method
 //for some reason 
 	loseRound () {
@@ -364,7 +363,7 @@ const game = {
 }
 	
 //Below code is pretty much the same as above
-//with a few tweaks in the items names to ensure
+//with a few tweaks in element/functions names to ensure
 //animation and jquery work properly
 const game2 = {
 	clock: null,
@@ -422,11 +421,41 @@ const game2 = {
 		const $newBird = $('<div id="item1">')
 		$('#item1container').append($newBird)
 		$('#item1').on('click', function(event) {
-		if (game.birdFalling === true) {
-		game2.touchItem1()
+			if (game.birdFalling === true) {
+				game2.touchItem1()
 
-		}
+			}
+		})
+	},
 
+	createNewPlatipuss () {
+		const $newPlatipuss = $('<div id="item2">')
+		$('#item2container').append($newPlatipuss)
+		$('#item2').on('click', function(event) {
+			if (game2.platipussFalling === true) {
+					game2.touchItem2()
+			}
+		})
+	},
+
+	createNewPup () {
+		const $newPup = $('<div id="item3">')
+		$('#item3container').append($newPup)
+		$('#item3').on('click', function(event) {
+			if (game2.pupFalling === true) {
+					game2.touchItem3()
+			}
+		})
+	},
+
+	createNewHeart () { 
+		const $newHeart = $('<div id="item4">')
+		$('#item4container').append($newHeart)
+		$('#item4').on('click', function(event) {
+		console.log(event.target);
+			if (game2.heartFalling === true) {
+					game2.touchItem4()
+			}
 		})
 	},
 
@@ -435,57 +464,23 @@ const game2 = {
 		$('#basket2').append($newBasketBird)
 	},
 
-	createNewPlatipuss () {
-		const $newPlatipuss = $('<div id="item2">')
-		$('#item2container').append($newPlatipuss)
-		$('#item2').on('click', function(event) {
-		if (game2.platipussFalling === true) {
-		game2.touchItem2()
-			}
-
-		})
-
-	},
 
 	createPlatipussForBasket () {
 		const $newBasketPlatipuss = $('<div id="item22">')
 		$('#basket2').append($newBasketPlatipuss)
 	},
 
-	createNewPup () {
-		const $newPup = $('<div id="item3">')
-		$('#item3container').append($newPup)
-		$('#item3').on('click', function(event) {
-		if (game2.pupFalling === true) {
-		game2.touchItem3()
-			}
-
-		})
-
-	},
 
 	createPupForBasket () {
 		const $newBasketPup = $('<div id="item33">')
 		$('#basket2').append($newBasketPup)
 	},
 
-	createNewHeart () { 
-		const $newHeart = $('<div id="item4">')
-		$('#item4container').append($newHeart)
-		$('#item4').on('click', function(event) {
-		console.log(event.target);
-		if (game2.heartFalling === true) {
-		game2.touchItem4()
-			}
-
-		})
-	},
 
 	createHeartForBasket () {
 		const $newBasketHeart = $('<div id="item44">')
 		$('#basket2').append($newBasketHeart)
 	},
-
 
 
 	rollItems () {
@@ -622,12 +617,12 @@ const game2 = {
 		}
 	},
 
-	loseLife () {
+		loseLife () {
 			this.lives--
 			$('#lives').text("Lives: " + this.lives)
 			if (this.lives === 0) { 
-			$('#game-container').empty()
-			$('#game-container').append("Aw buddy you are out of lives >.<... Wanna try again?").css('font-size', '40px', 'justify-content')
+				$('#game-container').empty()
+				$('#game-container').append("Aw buddy you are out of lives >.<... Wanna try again?").css('font-size', '40px', 'justify-content')
 		}
 		
 	},
@@ -639,7 +634,7 @@ const game2 = {
 			
 	},
 
-	releaseDudes () {
+		releaseDudes () {
 		$('#basket3').text(`CLICK HERE TO SEE WHO WON`).css('color', 'white')
 
 		$('#item1, #item11, #item2, #item22, #item3, #item33, #item4, #item44').animate ({
@@ -648,7 +643,7 @@ const game2 = {
 		});	
 	},
 
-	compareStats () {
+		compareStats () {
 
 		if (game.score < game2.score) {
 			$('#basket-container').append(`Player 2 wins! Well done, buddy! Take your friends home`)
@@ -684,26 +679,26 @@ $('#heart').on('click', function(event) {
 
 $('#item1, #item11').on('click', function(event) {
 	if (game.birdFalling === true) {
-		game.touchItem1()
+			game.touchItem1()
 	}
 })
 
 $('#item2, #item22').on('click', function(event) {
 	if (game.platipussFalling === true) {
-		game.touchItem2()
+			game.touchItem2()
 	}
 })
 
 $('#item3, #item33').on('click', function(event) {
 	if (game.pupFalling === true) {
-		game.touchItem3()
+			game.touchItem3()
 	}
 })
 
 $('#item4, #item44').on('click', function(event) {
 	console.log(event.target);
 	if (game.heartFalling === true) {
-		game.touchItem4()
+			game.touchItem4()
 	}
 })
 
@@ -730,7 +725,7 @@ $('#ramp1, #ramp2, #ramp3, #ramp4,').click(function(){
 $('#item1, #item11').on('click', function(event) {
 	console.log(event.target);
 	if (game2.birdFalling === true) {
-		game2.touchItem1()
+			game2.touchItem1()
 	}
 
 })
@@ -738,7 +733,7 @@ $('#item1, #item11').on('click', function(event) {
 $('#item2, #item22').on('click', function(event) {
 	console.log(event.target);
 	if (game2.platipussFalling === true) {
-		game2.touchItem2()
+			game2.touchItem2()
 	}
 
 })
@@ -746,7 +741,7 @@ $('#item2, #item22').on('click', function(event) {
 $('#item3, #item33').on('click', function(event) {
 	console.log(event.target);
 	if (game2.pupFalling === true) {
-		game2.touchItem3()
+			game2.touchItem3()
 	}
 
 })
@@ -754,7 +749,7 @@ $('#item3, #item33').on('click', function(event) {
 $('#item4, #item44').on('click', function(event) {
 	console.log(event.target);
 	if (game2.heartFalling === true) {
-		game2.touchItem4()
+			game2.touchItem4()
 	}
 
 })
