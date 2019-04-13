@@ -15,28 +15,30 @@ console.log("createnewbirdcreatenewbirdcreatenewbirdcreatenewbirddddd");
 //create logic for starting the game
 //create second set of items
 //second player game
+//fix touch function not working for second player
+//better logic for win game (rn - winner announced on click scoreboard/ player doesnt know to do so)
+//Better start of the game logic
+//Instructions
 
 
 //In progress:
 //clean up code
 //add comments to code for easier read
-//fix touch function not working for second player
 
 
 //To be completed:
 
 //fix readme and user story
-//better logic for win game (rn - winner announced on click scoreboard/ player doesnt know to do so)
-//fix overlap of divs during basket animation
+
 //fix items 11 22 33 44 not working on releaseDudes()
 //Timer - push stats to the scoreboard
-//Better start of the game logic - button?
-//Instructions along with the button to start the game
+//push player 2 stats to the scoreboard
 //div next to the door letting user know to click on animals to release them
 
 
 
 //If time allows:
+//fix overlap of divs during basket animation
 //have the door appear when player is done instead of right away
 //third round
 //add sounds
@@ -136,7 +138,7 @@ const game = {
 
 //createNew<..> code below is used to create new items
 //that roll down the ramp
-	createNewBird () {
+	createNewBird () { 
 		const $newBird = $('<div id="item1">')
 		$('#item1container').append($newBird)
 
@@ -144,19 +146,7 @@ const game = {
 		if (game.birdFalling === true) {
 		game.touchItem1()
 			}
-
 		})
-
-	},
-//create<...>ForBasket code is used to create
-//an illusion that the items that user clicks 
-//go directly in the basket(by basket I mean one of the three divs in the middle
-//of the game container). This was created because I couldnt find
-//another way to stop the animation when items were inside the basket
-//this way the items that are appended are always static until released
-	createBirdForBasket () {
-		const $newBasketBird = $('<div id="item11">')
-		$('#basket1').append($newBasketBird)
 	},
 
 	createNewPlatipuss () {
@@ -166,14 +156,7 @@ const game = {
 		if (game.platipussFalling === true) {
 		game.touchItem2()
 			}
-
 		})
-
-	},
-
-	createPlatipussForBasket () {
-		const $newBasketPlatipuss = $('<div id="item22">')
-		$('#basket1').append($newBasketPlatipuss)
 	},
 
 	createNewPup () {
@@ -183,14 +166,7 @@ const game = {
 		if (game.pupFalling === true) {
 		game.touchItem3()
 			}
-
 		})
-
-	},
-
-	createPupForBasket () {
-		const $newBasketPup = $('<div id="item33">')
-		$('#basket1').append($newBasketPup)
 	},
 
 	createNewHeart () { 
@@ -201,9 +177,31 @@ const game = {
 		if (game.heartFalling === true) {
 		game.touchItem4()
 			}
-
 		})
 	},
+
+//create<...>ForBasket code is used to create
+//an illusion that the items that user clicks 
+//go directly in the basket(by basket I mean one of the three divs in the middle
+//of the game container). This was created because I couldnt find
+//another way to stop the animation when items were inside the basket
+//this way the items that are appended are always static until released
+
+	createPlatipussForBasket () {
+		const $newBasketPlatipuss = $('<div id="item22">')
+		$('#basket1').append($newBasketPlatipuss)
+	},
+
+	createBirdForBasket () {
+		const $newBasketBird = $('<div id="item11">')
+		$('#basket1').append($newBasketBird)
+	},
+
+	createPupForBasket () {
+		const $newBasketPup = $('<div id="item33">')
+		$('#basket1').append($newBasketPup)
+	},
+
 
 	createHeartForBasket () {
 		const $newBasketHeart = $('<div id="item44">')
@@ -345,13 +343,20 @@ const game = {
 //off they go back to their cosy couches and fresh food
 	releaseDudes () {
 			// this.releaseDudes = true;
-
-			$('#item11').animate ({
+			$('#item1').animate ({
 				"left": "300px",
 			}, 3000, () => { console.log('done');
 				
 			});
-			$('#item1').animate ({
+
+			$('#item11').animate ({
+				"left": "300px",
+			}, 3000, () => { console.log('done');
+
+			});
+
+			
+			$('#item2').animate ({
 				"left": "300px",
 			}, 3000, () => { console.log('done');
 				
@@ -363,7 +368,7 @@ const game = {
 				
 			});
 
-			$('#item2').animate ({
+			$('#item3').animate ({
 				"left": "300px",
 			}, 3000, () => { console.log('done');
 				
@@ -375,7 +380,7 @@ const game = {
 				
 			});
 
-			$('#item3').animate ({
+			$('#item4').animate ({
 				"left": "300px",
 			}, 3000, () => { console.log('done');
 				
@@ -387,11 +392,7 @@ const game = {
 				
 			});
 
-			$('#item4').animate ({
-				"left": "300px",
-			}, 3000, () => { console.log('done');
-				
-			});
+		
 	},
 
 //loseRound is a function that announces that player lost
@@ -419,18 +420,6 @@ const game = {
 		}
 		
 	},
-
-//loseGame is used when user 
-	loseGame () {
-		if (this.lives === 0) { 
-		$('#game-container').remove()
-		}
-	},
-
-	winGame () {
-
-	},
-
 
 }
 	
@@ -958,33 +947,31 @@ $('#basket1').on('click', function(event) {
 
 $('#door').on('click', function(event) {
 	console.log("closing the door");
-	// if (game.releaseDudes === true) {
 		game2.startNextRound()
-	// }
-
 })
 
 
 
 $('#basket2').on('click', function(event) {
 	console.log("you touched basket2");
-	// if (game.releaseDudes === true) {
 		game2.releaseDudes()
-	// }
+
 
 })
 
+//Beginning of the game listeners
 
-$('#inside-text').on('click', function(event) {
-	$('#game-container').hide()
-
-})
-
-$('#click-here').on('click', function(event) {
-	$('#game-container').show()
+//displays game insructions when div "#here" is clicked
+$('#here').on('click', function(event) {
 	$('#curtain').remove()
-	game.startGame()
+	$('#hide-instructions').css('display', 'block')
+})
 
+
+$('#heart').on('click', function(event) {
+	$('#instructions-container').remove()
+	$('#hide-game').css('display', 'block')
+	game.startGame()
 })
 
 $('#basket3').on('click', function(event) {

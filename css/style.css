@@ -3,6 +3,18 @@ body {
 	background-size: 100%;
 }
 
+#here {
+	color: red;
+	display: inline;
+}
+
+#hide-game {
+	display: none;
+}
+
+#hide-instructions {
+	display: none;
+}
 
 #curtain {
 	height: 600px;
@@ -19,7 +31,7 @@ body {
 	margin: 30px;
 	position: relative;
 	flex-direction: column
-}*
+}
 
 #inside-text {	
 	padding-top: 300px;
@@ -36,8 +48,6 @@ body {
 #door {
 	height: 200px;
 	width: 150px;
-	/*border: solid 3px black;*/
-	/*background-color: rgb(255,255,51, .7);*/
 	background-image: url('http://pngimg.com/uploads/door/door_PNG17558.png');
 	background-size: 100% 100%;
 	left: 850px;
@@ -57,6 +67,26 @@ body {
 	left: 100px;
 	font-family: 'Special Elite', cursive;
 	font-size: 40px;
+}
+
+#instructions-container {
+	height: 700px;
+	width: 670px;
+	border: solid 3px black;
+	background-color: rgba(0,0,0, .8);
+	color: ivory;
+	position: relative;
+	top: 20px;
+	left: 50px;
+	bottom: 40px;
+	font-family: 'Special Elite', cursive;
+	font-size: 27px;
+	padding: 45px;
+
+}
+
+#heart {
+	display: inline;
 }
 
 #left-top-corner-container {
