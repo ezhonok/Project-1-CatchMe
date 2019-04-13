@@ -10,23 +10,38 @@ console.log("createnewbirdcreatenewbirdcreatenewbirdcreatenewbirddddd");
 //Improve end of round logic
 //push player1 stats in the storage
 //new round - complete logic (new set of characters - stretch)
-
-
-//In progress:
-//second player game
-
-//To be completed:
 //compare player stats
 //create logic for win game
 //create logic for starting the game
 //create second set of items
-//fix Time is up message (not centered)
+
+
+//In progress:
+//second player game
+//fix touch function not working for second player
+
+
+//To be completed:
+//clean up code
+//add comments to code for easier read
+//fix readme and user story
+//better logic for win game (rn - winner announced on click scoreboard/ player doesnt know to do so)
+//fix overlap of divs during basket animation
+//fix items 11 22 33 44 not working on releaseDudes()
+//Timer - push stats to the scoreboard
+//Better start of the game logic - button?
+//Instructions along with the button to start the game
+//div next to the door letting user know to click on animals to release them
+
+
 
 //If time allows:
-//fix items 11 22 33 44 not working on releaseDudes()
+//have the door appear when player is done
+//third round
 //add sounds
 //lose life - needs better logic
-//Timer - push stats to the scoreboard
+//fix Time is up message (not centered)
+//fix all dynamic messages for that matter - none are centered
 
 
 
@@ -56,9 +71,6 @@ class Item {
 
 
 const game = {
-	// playerOneStats: null, //will be used when player 1 is done
-	// playerTwoStats: null, //will be used when player 2 is done
-
 	clock: null,
 	lives: 3,
 	round: null,
@@ -108,10 +120,10 @@ const game = {
 		if (this.clock === 15) {
 			$('#scoreboard').empty()
 			$('#scoreboard').append(`Time is up! You saved ${this.score} innocent souls!`).css('font-size', '20px', 'text-align', 'center')
-			// $('#item1container').remove()
-			// $('#item2container').remove()
-			// $('#item3container').remove()
-			// $('#item4container').remove()
+			$('#item1container').remove()
+			$('#item2container').remove()
+			$('#item3container').remove()
+			$('#item4container').remove()
 			clearInterval(this.timerId)
 			this.roundStarted = false;
 			this.resultRound1()
@@ -194,7 +206,6 @@ const game = {
 	rollItems () {
 
 		const randItem = Math.floor((Math.random() * 4) + 1)
-		console.log(randItem)
 		const newItem = new Item(randItem)
 		this.itemEssence = newItem
 
@@ -521,7 +532,6 @@ const game2 = {
 
 	rollItems () {
 		const randItem = Math.floor((Math.random() * 4) + 1)
-		console.log(randItem)
 		const newItem = new Item(randItem)
 		this.itemEssence = newItem
 
@@ -736,13 +746,6 @@ const game2 = {
 	}
 
 }
-
-// game.startGame();
-
-// game.stopTimer()
-// game.moveLeftUp()
-// game.loseGame()
-
 
 
 

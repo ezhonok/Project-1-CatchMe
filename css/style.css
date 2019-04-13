@@ -8,12 +8,8 @@ body {
 	height: 600px;
 	width: 800px;
 	border: solid 3px black;
-/*	border-radius: 20%;
-*/	background-image: url("http://d3vui3t7cisnc8.cloudfront.net/img/full/20090412049E267E812AD3_0001.jpg");	/*opacity: .5;*/
+	background-image: url("http://d3vui3t7cisnc8.cloudfront.net/img/full/20090412049E267E812AD3_0001.jpg");	/*opacity: .5;*/
 	color: black;
-	
-/*	top: -100px;
-	left: 100px;*/
 	font-family: 'Special Elite', cursive;
 	font-size: 40px;
 	background-size: 100% 100%;
@@ -25,9 +21,7 @@ body {
 	flex-direction: column
 }
 
-#inside-text {
-/*	justify-content: space-around;
-/**/	
+#inside-text {	
 	padding-top: 300px;
 	padding-right: 70px;
 	padding-left: 70px;
@@ -57,7 +51,6 @@ body {
 	border: solid 3px black;
 	border-radius: 20%;
 	background-color: rgba(51,170,51, .5);
-	/*opacity: .5;*/
 	color: ivory;
 	position: relative;
 	top: -100px;
@@ -90,18 +83,12 @@ body {
 	height: 10px;
 	width: 150px;
 	background-image: url('https://i.gifer.com/GpaE.gif');
-
-
-
 }
 
 #item1container {
 	height: 80px;
 	width: 150px;
-	/*background-color: blue;*/
 	position: relative;
-
-	
 }
 
 #item1 {
@@ -165,7 +152,6 @@ body {
 #item2container {
 	height: 80px;
 	width: 150px;
-	/*background-color: blue;*/
 	position: relative;
 	display: flex;
 	flex-direction: column-reverse;
@@ -180,7 +166,6 @@ body {
 	background-image: url("https://i.imgur.com/bVXhwYX.jpg");
 	background-size: 100% 100%;
 	border-radius: 50%;
-	/*left: 40%;*/
 }
 
 #item22 {
@@ -191,26 +176,8 @@ body {
 	background-image: url("https://i.imgur.com/bVXhwYX.jpg");
 	background-size: 100% 100%;
 	border-radius: 50%;
-	/*left: 40%;*/
 }
 
-#item222 {
-	height: 80px;
-	width: 70px;
-	background-image: url("https://i.imgur.com/bVXhwYX.jpg");
-	background-size: 100% 100%;
-	position: relative;
-	border-radius: 50%;
-}
-
-#item2222 {
-	height: 80px;
-	width: 70px;
-	background-image: url("https://i.imgur.com/bVXhwYX.jpg");
-	background-size: 100% 100%;
-	position: relative;
-	border-radius: 50%;
-}
 
 #ramp2 {
 	height: 10px;
@@ -242,10 +209,7 @@ body {
 #item3container {
 	height: 80px;
 	width: 150px;
-	/*background-color: blue;*/
 	position: relative;
-	/*top: 0%;
-	left: 74%;*/
 }
 
 #item3 {
@@ -266,23 +230,6 @@ body {
 	border-radius: 50%;
 }
 
-#item333 {
-	height: 80px;
-	width: 70px;
-	background-image: url("https://i.imgur.com/qox3mtW.jpg");
-	background-size: 100% 100%;
-	position: relative;
-	border-radius: 50%;
-}
-
-#item3333 {
-	height: 80px;
-	width: 70px;
-	background-image: url("https://i.imgur.com/qox3mtW.jpg");
-	background-size: 100% 100%;
-	position: relative;
-	border-radius: 50%;
-}
 
 #ramp3 {
 	height: 10px;
@@ -310,15 +257,6 @@ body {
 	overflow: hidden;
 }
 
-/*#character-container1 {
-	height: 80px;
-	width: 150px;
-	background-color: blue;
-	position: relative;
-	display: flex;
-	flex-direction: column-reverse;
-
-}*/
 
 #item4 {
 	height: 80px;
@@ -334,24 +272,6 @@ body {
 	height: 80px;
 	width: 70px;
 	align-self: flex-end;
-	background-image: url("https://i.imgur.com/uOb3vvX.jpg");
-	background-size: 100% 100%;
-	position: relative;
-	border-radius: 50%;
-}
-
-#item444 {
-	height: 80px;
-	width: 70px;
-	background-image: url("https://i.imgur.com/uOb3vvX.jpg");
-	background-size: 100% 100%;
-	position: relative;
-	border-radius: 50%;
-}
-
-#item4444 {
-	height: 80px;
-	width: 70px;
 	background-image: url("https://i.imgur.com/uOb3vvX.jpg");
 	background-size: 100% 100%;
 	position: relative;
@@ -420,15 +340,12 @@ body {
 	width: 250px;
 	background-image: url('https://thumbs.dreamstime.com/t/box-dark-edges-inside-blue-50865067.jpg');
 	background-size: 100% 100%;
-	/*background-color: tomato;*/
 	border: solid 1px black;
 	color: black;
 	display: flex;
 	flex-direction: row;
 	overflow: hidden;
 	position: relative;
-	/*border-radius: 20%;*/
-
 }
 
 
@@ -447,22 +364,6 @@ body {
 	font-family: 'Special Elite', cursive;
 	display: flex;
 	flex-direction: column;
-
-
-
-}
-
-#exit {
-	height: 80px;
-	width: 250px;
-	/*background-color: tomato;*/
-	/*border: solid 1px black;*/
-	position: relative;
-	background-size: contain;
-	color: black;
-	display: flex;
-	flex-direction: row;
-	overflow: hidden;
 }
 
 
