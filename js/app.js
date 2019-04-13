@@ -19,38 +19,35 @@ console.log("createnewbirdcreatenewbirdcreatenewbirdcreatenewbirddddd");
 //better logic for win game (rn - winner announced on click scoreboard/ player doesnt know to do so)
 //Better start of the game logic
 //Instructions
-
-
-//In progress:
 //clean up code
 //add comments to code for easier read
 
 
+//In progress:
+//fix readme and user stories
+
 //To be completed:
 
-//fix readme and user story
-
-//fix items 11 22 33 44 not working on releaseDudes()
 //Timer - push stats to the scoreboard
 //push player 2 stats to the scoreboard
 //div next to the door letting user know to click on animals to release them
 
 
 
-//If time allows:
+//Upcoming features/bug fixes:
+//fix items 11 22 33 44 not working on releaseDudes()
 //fix overlap of divs during basket animation
-//have the door appear when player is done instead of right away
-//third round
+//have the door appear when time is up instead of right away
 //add sounds
-//lose life - needs better logic
+//lose life - logic for when items fall
 //fix Time is up message (not centered)
 //fix all dynamic messages for that matter - none are centered, cant figure out why css()isnt working for this
 
 
 
-//GAME: Help your friends Escape to safety! Round 1 - practice; Round 2 - pets; Round 3 - knowledge
+//GAME: Help your friends Escape to safety!
 //You got a telegram saying your friends have been 
-//captured by evil ... They are planning a mass escape. Are you prepared to help them
+//kidnapped and locked up in a dungeon.. Not to worry! They are planning a mass escape. Are you prepared to help them
 //get to safety? 
 
 
@@ -60,16 +57,13 @@ class Player {
 		this.lives = 0;
 		this.score = 0;
 		this.round = 1;
-
 	}
-
 }
 
 class Item {
 	constructor(number) {
 		this.number = number;	
 	}
-
 }
 
 
@@ -296,10 +290,7 @@ const game = {
 			this.score++
 			$('#score').text("Score: " + this.score)
 			this.createBirdForBasket()
-			$('#item1').remove()
-
-			// this.createNewBird()
-			
+			$('#item1').remove()			
 	},
 
 	touchItem2 () {
@@ -307,7 +298,6 @@ const game = {
 			$('#score').text("Score: " + this.score)
 			this.createPlatipussForBasket()
 			$('#item2').remove()
-			// this.createNewPlatipuss()
 	},
 
 	touchItem3 () {
@@ -315,24 +305,20 @@ const game = {
 			$('#score').text("Score: " + this.score)
 			this.createPupForBasket()
 			$('#item3').remove()
-			
-			// this.createNewPup()
+
 	},
+
 	touchItem4 () {
 			this.score++
 			$('#score').text("Score: " + this.score)
 			this.createHeartForBasket()
 			$('#item4').remove()
 			
-			// this.createNewHeart()
-			
 	},
 
 //resultRound is used to move the basket with
 //"caught" items towards the door
 	resultRound1 () {
-		// console.log("resultround is called");
-			// if (this.roundOver === true) {
 			$('#basket1').animate ({
 				"left": "465px",
 			}, 6000, );
@@ -342,57 +328,11 @@ const game = {
 //releaseDudes..well is used to release the dudes duh
 //off they go back to their cosy couches and fresh food
 	releaseDudes () {
-			// this.releaseDudes = true;
-			$('#item1').animate ({
+			$('#item1, #item11, #item2, #item22, #item3, #item33, #item4, #item44').animate ({
 				"left": "300px",
 			}, 3000, () => { console.log('done');
 				
 			});
-
-			$('#item11').animate ({
-				"left": "300px",
-			}, 3000, () => { console.log('done');
-
-			});
-
-			
-			$('#item2').animate ({
-				"left": "300px",
-			}, 3000, () => { console.log('done');
-				
-			});
-
-			$('#item22').animate ({
-				"left": "300px",
-			}, 3000, () => { console.log('done');
-				
-			});
-
-			$('#item3').animate ({
-				"left": "300px",
-			}, 3000, () => { console.log('done');
-				
-			});
-
-			$('#item33').animate ({
-				"left": "300px",
-			}, 3000, () => { console.log('done');
-				
-			});
-
-			$('#item4').animate ({
-				"left": "300px",
-			}, 3000, () => { console.log('done');
-				
-			});
-
-			$('#item44').animate ({
-				"left": "300px",
-			}, 3000, () => { console.log('done');
-				
-			});
-
-		
 	},
 
 //loseRound is a function that announces that player lost
@@ -459,9 +399,8 @@ const game2 = {
 		$('#basket2').empty()
 		$('#scoreboard').empty()
 		$('#score').text("Score: " + this.score)
-		$('#lives').text("Score: " + this.score)
-		$('#round').text("Score: " + this.score)
-		// this.createNewBird()
+		$('#lives').text("Lives: " + this.score)
+		$('#round').text("Round: " + this.score)
 	},
 
 	startTimer() {
@@ -665,10 +604,7 @@ const game2 = {
 		if (this.clock === 17) {
 			$('#scoreboard').empty()
 			$('#scoreboard').append(`Time is up! You saved ${this.score} innocent souls!`).css('font-size', '20px', 'text-align', 'center')
-			$('#item1container').remove()
-			$('#item2container').remove()
-			$('#item3container').remove()
-			$('#item4container').remove()
+			$('#item1container, #item2container, #item3container, #item4container, #ramp1, #ramp2, #ramp3, #ramp4').remove()
 			clearInterval(this.timerId)
 			this.roundStarted = false;
 			this.resultRound1()
@@ -682,7 +618,6 @@ const game2 = {
 			$('#game-container').empty()
 			const $newBasketContainer = $('<div id="basket-container">')
 			$('#game-container').append($newBasketContainer)
-			$('#basket-container')
 			$('#basket-container').append("Wow... These are your friends we are talking about! Doesn't seem like you even tried...You'd better try again and rescue them this time!").css('font-size', '30px');
 		}
 	},
@@ -707,52 +642,10 @@ const game2 = {
 	releaseDudes () {
 		$('#basket3').text(`CLICK HERE TO SEE WHO WON`).css('color', 'white')
 
-			$('#item11').animate ({
+		$('#item1, #item11, #item2, #item22, #item3, #item33, #item4, #item44').animate ({
 				"left": "300px",
 			}, 3000, () => { console.log('done');
-				
-			});
-			$('#item1').animate ({
-				"left": "300px",
-			}, 3000, () => { console.log('done');
-				
-			});
-
-			$('#item22').animate ({
-				"left": "300px",
-			}, 3000, () => { console.log('done');
-				
-			});
-
-			$('#item2').animate ({
-				"left": "300px",
-			}, 3000, () => { console.log('done');
-				
-			});
-
-			$('#item33').animate ({
-				"left": "300px",
-			}, 3000, () => { console.log('done');
-				
-			});
-
-			$('#item3').animate ({
-				"left": "300px",
-			}, 3000, () => { console.log('done');
-				
-			});
-
-			$('#item44').animate ({
-				"left": "300px",
-			}, 3000, () => { console.log('done');
-				
-			});
-
-			$('#item4').animate ({
-				"left": "300px",
-			}, 3000, () => { console.log('done');
-				
-			});
+		});	
 	},
 
 	compareStats () {
@@ -770,215 +663,133 @@ const game2 = {
 
 
 
-//Listeners
 
-$('#item1').on('click', function(event) {
-	console.log(event.target);
-	console.log("YOU TOUCHED ME");
-	if (game.birdFalling === true) {
-		game.touchItem1()
-	}
+//Pre-game listeners
 
-})
-
-$('#item2').on('click', function(event) {
-	console.log(event.target);
-	if (game.platipussFalling === true) {
-		game.touchItem2()
-	}
-
-})
-
-$('#item3').on('click', function(event) {
-	console.log(event.target);
-	if (game.pupFalling === true) {
-		game.touchItem3()
-	}
-
-})
-
-$('#item4').on('click', function(event) {
-	console.log(event.target);
-	if (game.heartFalling === true) {
-		game.touchItem4()
-	}
-
-})
-
-
-
-$('#item11').on('click', function(event) {
-	console.log(event.target);
-	console.log("YOU TOUCHED ME");
-	if (game.birdFalling === true) {
-		game.touchItem1()
-	}
-
-})
-
-$('#item22').on('click', function(event) {
-	console.log(event.target);
-	if (game.platipussFalling === true) {
-		game.touchItem2()
-	}
-
-})
-
-$('#item33').on('click', function(event) {
-	console.log(event.target);
-	if (game.pupFalling === true) {
-		game.touchItem3()
-	}
-
-})
-
-$('#item44').on('click', function(event) {
-	console.log(event.target);
-	if (game.heartFalling === true) {
-		game.touchItem4()
-	}
-
-})
-
-
-
-
-
-$('#item1').on('click', function(event) {
-	console.log(event.target);
-	if (game2.birdFalling === true) {
-		game2.touchItem1()
-	}
-
-})
-
-$('#item2').on('click', function(event) {
-	console.log(event.target);
-	if (game2.platipussFalling === true) {
-		game2.touchItem2()
-	}
-
-})
-
-$('#item3').on('click', function(event) {
-	console.log(event.target);
-	if (game2.pupFalling === true) {
-		game2.touchItem3()
-	}
-
-})
-
-$('#item4').on('click', function(event) {
-	console.log(event.target);
-	if (game2.heartFalling === true) {
-		game2.touchItem4()
-	}
-
-})
-
-
-$('#item11').on('click', function(event) {
-	console.log(event.target);
-	if (game2.birdFalling === true) {
-		game2.touchItem1()
-	}
-
-})
-
-$('#item22').on('click', function(event) {
-	console.log(event.target);
-	if (game2.platipussFalling === true) {
-		game2.touchItem2()
-	}
-
-})
-
-$('#item33').on('click', function(event) {
-	console.log(event.target);
-	if (game2.pupFalling === true) {
-		game2.touchItem3()
-	}
-
-})
-
-$('#item44').on('click', function(event) {
-	console.log(event.target);
-	if (game2.heartFalling === true) {
-		game2.touchItem4()
-	}
-
-})
-
-
-//Event listeners
-$('#game-container').on('click', (event) => {
-	console.log(event.target);
-})
-
-
-$('#ramp1').click(function(){
-	game.loseLife()
-});
-
-
-$('#ramp2').click(function(){
-	game.loseLife()
-});
-
-
-
-$('#ramp3').click(function(){
-	game.loseLife()
-});
-
-$('#ramp4').click(function(){
-	game.showLoseLife()
-});
-
-
-
-$('#basket1').on('click', function(event) {
-	console.log("you touched basket1");
-		game.releaseDudes()
-	// }
-
-})
-
-
-$('#door').on('click', function(event) {
-	console.log("closing the door");
-		game2.startNextRound()
-})
-
-
-
-$('#basket2').on('click', function(event) {
-	console.log("you touched basket2");
-		game2.releaseDudes()
-
-
-})
-
-//Beginning of the game listeners
-
-//displays game insructions when div "#here" is clicked
+//switches "telegram"(#curtain) to game insructions when div "#here" is clicked
 $('#here').on('click', function(event) {
 	$('#curtain').remove()
 	$('#hide-instructions').css('display', 'block')
 })
 
-
+//listens for div #heart to call the function that starts the game
 $('#heart').on('click', function(event) {
 	$('#instructions-container').remove()
 	$('#hide-game').css('display', 'block')
 	game.startGame()
 })
 
+
+//Event Listeners for round 1
+
+$('#item1, #item11').on('click', function(event) {
+	if (game.birdFalling === true) {
+		game.touchItem1()
+	}
+})
+
+$('#item2, #item22').on('click', function(event) {
+	if (game.platipussFalling === true) {
+		game.touchItem2()
+	}
+})
+
+$('#item3, #item33').on('click', function(event) {
+	if (game.pupFalling === true) {
+		game.touchItem3()
+	}
+})
+
+$('#item4, #item44').on('click', function(event) {
+	console.log(event.target);
+	if (game.heartFalling === true) {
+		game.touchItem4()
+	}
+})
+
+//listens to call the function that animates items at the end
+//of the round (moving them out the door)
+$('#basket1').on('click', function(event) {
+		game.releaseDudes()
+})
+
+//listens to call the function that starts round 2
+$('#door').on('click', function(event) {
+	console.log("closing the door");
+		game2.startNextRound()
+})
+
+//listens to call the function taht reduces number of lives
+$('#ramp1, #ramp2, #ramp3, #ramp4,').click(function(){
+	game.loseLife()
+});
+
+
+
+//Event listeners for round 2
+$('#item1, #item11').on('click', function(event) {
+	console.log(event.target);
+	if (game2.birdFalling === true) {
+		game2.touchItem1()
+	}
+
+})
+
+$('#item2, #item22').on('click', function(event) {
+	console.log(event.target);
+	if (game2.platipussFalling === true) {
+		game2.touchItem2()
+	}
+
+})
+
+$('#item3, #item33').on('click', function(event) {
+	console.log(event.target);
+	if (game2.pupFalling === true) {
+		game2.touchItem3()
+	}
+
+})
+
+$('#item4, #item44').on('click', function(event) {
+	console.log(event.target);
+	if (game2.heartFalling === true) {
+		game2.touchItem4()
+	}
+
+})
+
+
+$('#basket2').on('click', function(event) {
+		game2.releaseDudes()
+})
+
+//listens to call the function taht announces the winner
 $('#basket3').on('click', function(event) {
 	$('#scoreboard').empty()
 	game2.compareStats()
 
 })
+
+//listens to call the function taht reduces number of lives
+$('#ramp1, #ramp2, #ramp3, #ramp4,').click(function(){
+	game2.loseLife()
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
