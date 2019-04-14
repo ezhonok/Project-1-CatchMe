@@ -21,10 +21,11 @@ console.log("createnewbirdcreatenewbirdcreatenewbirdcreatenewbirddddd");
 //Instructions
 //clean up code
 //add comments to code for easier read
+///fix items 11 22 33 44 not working on releaseDudes()
 //fix readme and user stories
 
 //In progress:
-
+//fix end of game!! stopped working >.<
 
 
 //To be completed:
@@ -34,11 +35,10 @@ console.log("createnewbirdcreatenewbirdcreatenewbirdcreatenewbirddddd");
 
 
 //Upcoming features/bug fixes:
-//fix items 11 22 33 44 not working on releaseDudes()
-//fix overlap of divs during basket animation
+//fix overlap of divs during basket animation at the end of round 1
 //have the door appear when time is up instead of right away
 //add sounds
-//lose life - logic for when items fall
+//lose life - logic for when items fall off
 //better second player experience - timing of item creation is off
 //fix Time is up message (not centered)
 //fix all dynamic messages for that matter - none are centered, cant figure out why css()isnt working for this
@@ -585,16 +585,14 @@ const game2 = {
 			$('#item3').remove()
 			this.createPupForBasket()
 			
-			// this.createNewPup()
 	},
+
 	touchItem4 () {
 			this.score++
 			$('#score').text("Score: " + this.score)
 			$('#item4').remove()
 			this.createHeartForBasket()
-			
-			// this.createNewHeart()
-			
+						
 	},
 
 		stopTimer() {
@@ -645,6 +643,7 @@ const game2 = {
 			}, 3000, () => { console.log('done');
 				
 			});
+
 	},
 
 		compareStats () {
@@ -652,8 +651,11 @@ const game2 = {
 		if (game.score < game2.score) {
 			$('#basket-container').append(`Player 2 wins! Well done, buddy! Take your friends home`)
 		}
-		if (game.score > game2.score) {
-			$('#basket-container').append(`Player 1 wins! Well done, buddy! Take your friends home`)
+			if (game.score > game2.score) {
+				$('#basket-container').append(`Player 1 wins! Well done, buddy! Take your friends home`)
+
+			} else {
+					$('#basket-container').append(`Friendship has won!`)
 		}
 	}
 
@@ -662,13 +664,28 @@ const game2 = {
 
 
 
-
-//Pre-game listeners
+//Had to move basket2 and basket3 listeners up here
+//even though logically they go all the way in the bottom
+//they are the end of game listeners but stopped
+//working for some reason until I moved them up here
 
 $('#game-container').on('click', (event) => {
 	console.log(event.target);
 })
-	
+
+	$('#basket2').on('click', function(event) {
+	console.log('basket2 is clicked');
+	game2.releaseDudes()
+})
+
+	//listens to call the function taht announces the winner
+$('#basket3').on('click', function(event) {
+	$('#scoreboard').empty()
+		game2.compareStats()
+
+})
+
+//Pre-game listeners
 
 //switches "telegram"(#curtain) to game insructions when div "#here" is clicked
 $('#here').on('click', function(event) {
@@ -725,9 +742,9 @@ $('#door').on('click', function(event) {
 })
 
 //listens to call the function taht reduces number of lives
-$('#ramp1, #ramp2, #ramp3, #ramp4,').click(function(){
+$('#ramp1, #ramp2, #ramp3, #ramp4,').on('click', function(event) {
 	game.loseLife()
-});
+})
 
 
 
@@ -765,22 +782,14 @@ $('#item4, #item44').on('click', function(event) {
 
 })
 
-//listens to call the function taht announces the winner
-$('#basket3').on('click', function(event) {
-	$('#scoreboard').empty()
-	game2.compareStats()
 
-})
 
-$('#basket2').on('click', function(event) {
-	console.log('you clicked basket2');
-		game2.releaseDudes()
-})
+
 
 
 
 //listens to call the function taht reduces number of lives
-$('#ramp1, #ramp2, #ramp3, #ramp4,').click(function(){
+$('#ramp1, #ramp2, #ramp3, #ramp4,').on('click', function(event) {
 	game2.loseLife()
 });
 
