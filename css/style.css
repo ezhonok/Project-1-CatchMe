@@ -144,6 +144,16 @@ body {
 
 }
 
+#item111 {
+	height: 80px;
+	width: 70px;
+	background-image: url("https://i.imgur.com/oFSxH0B.jpg");
+	background-size: 100% 100%;
+	position: relative;
+	border-radius: 50%;
+	border: solid 2px black;
+
+}
 
 #right-top-corner-container {
 	height: 100px;
@@ -195,6 +205,16 @@ body {
 	border: solid 2px black;
 }
 
+#item222 {
+	height: 80px;
+	width: 70px;
+	position: relative;
+	align-self: flex-end;
+	background-image: url("https://i.imgur.com/bVXhwYX.jpg");
+	background-size: 100% 100%;
+	border-radius: 50%;
+	border: solid 2px black;
+}
 
 #ramp2 {
 	height: 10px;
@@ -249,7 +269,15 @@ body {
 	border: solid 2px black;
 }
 
-
+#item333 {
+	height: 80px;
+	width: 70px;
+	background-image: url("https://i.imgur.com/qox3mtW.jpg");
+	background-size: 100% 100%;
+	position: relative;
+	border-radius: 50%;
+	border: solid 2px black;
+}
 
 #ramp3 {
 	height: 10px;
@@ -300,6 +328,16 @@ body {
 	border: solid 2px black;
 }
 
+#item444 {
+	height: 80px;
+	width: 70px;
+	align-self: flex-end;
+	background-image: url("https://i.imgur.com/uOb3vvX.jpg");
+	background-size: 100% 100%;
+	position: relative;
+	border-radius: 50%;
+	border: solid 2px black;
+}
 
 #ramp4 {
 	height: 10px;
@@ -391,16 +429,7 @@ body {
 
 
 
-#doorSign {
-	height: 80px;
-	width: 250px;
-	background-color: green;
-	border: solid 1px black;
-	color: white;
-	font-size: 15px;
-	position: relative;
-	font-family: 'Special Elite', cursive;
-}
+
 
 
 

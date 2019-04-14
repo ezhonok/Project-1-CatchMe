@@ -21,10 +21,10 @@ console.log("createnewbirdcreatenewbirdcreatenewbirdcreatenewbirddddd");
 //Instructions
 //clean up code
 //add comments to code for easier read
-
+//fix readme and user stories
 
 //In progress:
-//fix readme and user stories
+
 
 
 //To be completed:
@@ -318,8 +318,7 @@ const game = {
 			$('#basket1').animate ({
 				"left": "465px",
 			}, 6000, );
-			const $doorSign = $('<div id="doorSign">Click the door to start round 2</div>')
-			$('#door').append($doorSign)
+			$('#door').text(`Click on any of the pets in the box to release them all`).css('color', 'white')
 
 		
 	},
@@ -332,6 +331,8 @@ const game = {
 			}, 3000, () => { console.log('done');
 				
 			});
+			$('#door').text(`Click the door to start round 2`).css('color', 'white')
+			
 	},
 
 //loseRound is a function that announces that player lost
@@ -394,6 +395,7 @@ const game2 = {
 		this.rollItems()
 		console.log(cat);
 		this.round++
+		$('#door').empty()
 		$('#round').text("Round: " + this.round)
 		$('#basket2').empty()
 		$('#scoreboard').empty()
@@ -635,12 +637,14 @@ const game2 = {
 	},
 
 		releaseDudes () {
+			console.log('called releaseDudes');
 		$('#basket3').text(`CLICK HERE TO SEE WHO WON`).css('color', 'white')
 
-		$('#item1, #item11, #item2, #item22, #item3, #item33, #item4, #item44').animate ({
+		$('#item11, #item22, #item33, #item44').animate ({
 				"left": "300px",
 			}, 3000, () => { console.log('done');
-		});	
+				
+			});
 	},
 
 		compareStats () {
@@ -661,6 +665,11 @@ const game2 = {
 
 //Pre-game listeners
 
+$('#game-container').on('click', (event) => {
+	console.log(event.target);
+})
+	
+
 //switches "telegram"(#curtain) to game insructions when div "#here" is clicked
 $('#here').on('click', function(event) {
 	$('#curtain').remove()
@@ -673,6 +682,7 @@ $('#heart').on('click', function(event) {
 	$('#hide-game').css('display', 'block')
 	game.startGame()
 })
+
 
 
 //Event Listeners for round 1
@@ -721,6 +731,7 @@ $('#ramp1, #ramp2, #ramp3, #ramp4,').click(function(){
 
 
 
+
 //Event listeners for round 2
 $('#item1, #item11').on('click', function(event) {
 	console.log(event.target);
@@ -754,11 +765,6 @@ $('#item4, #item44').on('click', function(event) {
 
 })
 
-
-$('#basket2').on('click', function(event) {
-		game2.releaseDudes()
-})
-
 //listens to call the function taht announces the winner
 $('#basket3').on('click', function(event) {
 	$('#scoreboard').empty()
@@ -766,11 +772,17 @@ $('#basket3').on('click', function(event) {
 
 })
 
+$('#basket2').on('click', function(event) {
+	console.log('you clicked basket2');
+		game2.releaseDudes()
+})
+
+
+
 //listens to call the function taht reduces number of lives
 $('#ramp1, #ramp2, #ramp3, #ramp4,').click(function(){
 	game2.loseLife()
 });
-
 
 
 
